@@ -5,6 +5,7 @@ Temp/
 Obj/
 UnityGenerated/
 Library/
+ProjectSettings/
 Assets/AssetStoreTools*
 
 # ===================================== #
@@ -20,6 +21,7 @@ ExportedObj/
 *.user
 *.unityproj
 *.booproj
+*.meta
 
 # ============ #
 # OS generated #

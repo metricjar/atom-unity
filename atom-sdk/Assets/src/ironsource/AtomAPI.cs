@@ -5,23 +5,20 @@ using System.Text;
 
 namespace ironsource {
 	public class AtomAPI : MonoBehaviour {
-		private static string API_VERSION = "V1";
+		private static string API_VERSION_ = "V1";
 
 		public string endpoint = "https://track.atom-data.io/";
 		public string auth = "";
 
-		private Dictionary<string, string> headers = new Dictionary<string, string>();
+		private Dictionary<string, string> headers_ = new Dictionary<string, string>();
 
-		protected void Awake() {		
-			headers.Add("x-ironsource-atom-sdk-type", "unity");
-			headers.Add("x-ironsource-atom-sdk-version", AtomAPI.API_VERSION);
+		public void Awake() {
+			headers_.Add("x-ironsource-atom-sdk-type", "unity");
+			headers_.Add("x-ironsource-atom-sdk-version", AtomAPI.API_VERSION_);
 		}
 
 		public void PutEvent(string stream, string data, string method = "post") {
-			string hash = "";
-			//if (auth.Length != 0) {
-				hash = AtomAPIUtils.EncodeHmac(data, Encoding.ASCII.GetBytes(auth));
-			//}
+			string hash = AtomAPIUtils.EncodeHmac(data, Encoding.ASCII.GetBytes(auth));
 
 			var eventObject = new Dictionary<string, string>();
 			eventObject ["table"] = stream;
@@ -31,15 +28,12 @@ namespace ironsource {
 
 			Debug.Log("Request body: " + jsonEvent);
 
-			this.StartCoroutine(SendEventCoroutine(endpoint, method, headers, jsonEvent));
+			this.StartCoroutine(SendEventCoroutine(endpoint, method, headers_, jsonEvent));
 		}
 
 		public void PutEvents(string stream, List<string> data, string method = "post") {
 			string json = AtomAPIUtils.ListToJson(data);
-			string hash = "";
-			//if (auth.Length != 0) {
-			hash = AtomAPIUtils.EncodeHmac(json, Encoding.ASCII.GetBytes(auth));
-			//}
+			string hash = AtomAPIUtils.EncodeHmac(json, Encoding.ASCII.GetBytes(auth));
 
 			var eventObject = new Dictionary<string, string>();
 			eventObject ["table"] = stream;
@@ -47,7 +41,7 @@ namespace ironsource {
 			eventObject["auth"] = hash;
 			string jsonEvent = AtomAPIUtils.DictionaryToJson(eventObject);
 
-			this.StartCoroutine(SendEventCoroutine(endpoint + "bulk", method, headers, jsonEvent));
+			this.StartCoroutine(SendEventCoroutine(endpoint + "bulk", method, headers_, jsonEvent));
 		}
 
 		private static IEnumerator SendEventCoroutine(string url, string method, Dictionary<string, string> headers,
