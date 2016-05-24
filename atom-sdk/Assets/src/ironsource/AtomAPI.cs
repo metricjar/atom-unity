@@ -8,7 +8,7 @@ namespace ironsource {
         private static string API_VERSION_ = "V1";
 
         public string endpoint = "https://track.atom-data.io/";
-        public string auth = "";
+        public string authKey = "";
 
         private Dictionary<string, string> headers_ = new Dictionary<string, string>();
 
@@ -18,7 +18,7 @@ namespace ironsource {
         }
 
         public void PutEvent(string stream, string data, string method = "post") {
-            string hash = AtomAPIUtils.EncodeHmac(data, Encoding.ASCII.GetBytes(auth));
+            string hash = AtomAPIUtils.EncodeHmac(data, Encoding.ASCII.GetBytes(authKey));
 
             var eventObject = new Dictionary<string, string>();
             eventObject ["table"] = stream;
@@ -33,9 +33,9 @@ namespace ironsource {
 
         public void PutEvents(string stream, List<string> data, string method = "post") {
             string json = AtomAPIUtils.ListToJson(data);
-            Debug.Log ("Key: " + auth);
+            Debug.Log ("Key: " + authKey);
 
-            string hash = AtomAPIUtils.EncodeHmac(json, Encoding.ASCII.GetBytes(auth));
+            string hash = AtomAPIUtils.EncodeHmac(json, Encoding.ASCII.GetBytes(authKey));
 
             var eventObject = new Dictionary<string, string>();
             eventObject ["table"] = stream;
