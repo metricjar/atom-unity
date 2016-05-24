@@ -8,7 +8,7 @@ using System.Text;
 using System.Linq;
 
 namespace ironsource {
-    public class AtomAPIUtils {        
+    public class IronSourceAtomUtils {        
         
         public static string DictionaryToJson(Dictionary<string, string> dictData) {
             var entries = dictData.Select(entryObject =>

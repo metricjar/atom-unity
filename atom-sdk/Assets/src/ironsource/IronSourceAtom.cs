@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ironsource {
-    public class AtomAPI : MonoBehaviour {
+    public class IronSourceAtom : MonoBehaviour {
         private static string API_VERSION_ = "V1";
 
         public string endpoint = "https://track.atom-data.io/";
@@ -14,7 +16,7 @@ namespace ironsource {
 
         public void Awake() {
             headers_.Add("x-ironsource-atom-sdk-type", "unity");
-            headers_.Add("x-ironsource-atom-sdk-version", AtomAPI.API_VERSION_);
+            headers_.Add("x-ironsource-atom-sdk-version", IronSourceAtom.API_VERSION_);
         }
 
         /**
@@ -57,18 +59,19 @@ namespace ironsource {
          * }
          * 
          */
-        public void PutEvent(string stream, string data, string method = "post") {
-            string hash = AtomAPIUtils.EncodeHmac(data, Encoding.ASCII.GetBytes(authKey));
+        public void PutEvent(string stream, string data, HttpMethod method = HttpMethod.POST, 
+                             Action<Response> callback = null) {
+            string hash = IronSourceAtomUtils.EncodeHmac(data, Encoding.ASCII.GetBytes(authKey));
 
             var eventObject = new Dictionary<string, string>();
             eventObject ["table"] = stream;
-            eventObject["data"] = AtomAPIUtils.EscapeStringValue(data);
+            eventObject["data"] = IronSourceAtomUtils.EscapeStringValue(data);
             eventObject["auth"] = hash;
-            string jsonEvent = AtomAPIUtils.DictionaryToJson(eventObject);
+            string jsonEvent = IronSourceAtomUtils.DictionaryToJson(eventObject);
 
             Debug.Log("Request body: " + jsonEvent);
 
-            this.StartCoroutine(SendEventCoroutine(endpoint, method, headers_, jsonEvent));
+            SendEventCoroutine (endpoint, method, headers_, jsonEvent, callback);
         }
 
         /**
@@ -113,43 +116,34 @@ namespace ironsource {
          *
          */
 
-        public void PutEvents(string stream, List<string> data, string method = "post") {
-            string json = AtomAPIUtils.ListToJson(data);
+        public void PutEvents(string stream, List<string> data, HttpMethod method = HttpMethod.POST, 
+                              Action<Response> callback = null) {
+            string json = IronSourceAtomUtils.ListToJson(data);
             Debug.Log ("Key: " + authKey);
 
-            string hash = AtomAPIUtils.EncodeHmac(json, Encoding.ASCII.GetBytes(authKey));
+            string hash = IronSourceAtomUtils.EncodeHmac(json, Encoding.ASCII.GetBytes(authKey));
 
             var eventObject = new Dictionary<string, string>();
             eventObject ["table"] = stream;
-            eventObject["data"] = AtomAPIUtils.EscapeStringValue(json);
+            eventObject["data"] = IronSourceAtomUtils.EscapeStringValue(json);
             eventObject["auth"] = hash;
-            string jsonEvent = AtomAPIUtils.DictionaryToJson(eventObject);
+            string jsonEvent = IronSourceAtomUtils.DictionaryToJson(eventObject);
 
             Debug.Log("Request body: " + jsonEvent);
 
-            this.StartCoroutine(SendEventCoroutine(endpoint + "bulk", method, headers_, jsonEvent));
+            SendEventCoroutine(endpoint + "bulk", method, headers_, jsonEvent, callback);
         }
 
-        private static IEnumerator SendEventCoroutine(string url, string method, Dictionary<string, string> headers,
-        									  string jsonEvent) {
-            WWW www = null;
-            if (method.ToLower() == "get") {
-                url = url + "?data=" + AtomAPIUtils.Base64Encode(jsonEvent);
-                Debug.Log("Request URL: " + url);
+        private void SendEventCoroutine(string url, HttpMethod method, Dictionary<string, string> headers,
+                                        string data, Action<Response> callback) {
 
-                www = new WWW(url, null, headers);
+            Request request = new Request(url, data, headers, callback);
+            if (method == HttpMethod.GET) {
+                this.StartCoroutine(request.Get());
             } else {
-                Debug.Log("Request URL: " + url);
-                www = new WWW(url, Encoding.ASCII.GetBytes(jsonEvent), headers);
+                this.StartCoroutine(request.Post());
             }
-            yield return www;
-
-            if (!string.IsNullOrEmpty(www.error))
-                Debug.Log(www.error);   
-            else {
-
-                Debug.Log("Response: " + www.text);
-            }
+           
         }
     }
 }
