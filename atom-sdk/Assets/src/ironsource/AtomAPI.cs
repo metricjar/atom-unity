@@ -33,13 +33,17 @@ namespace ironsource {
 
         public void PutEvents(string stream, List<string> data, string method = "post") {
             string json = AtomAPIUtils.ListToJson(data);
+            Debug.Log ("Key: " + auth);
+
             string hash = AtomAPIUtils.EncodeHmac(json, Encoding.ASCII.GetBytes(auth));
 
             var eventObject = new Dictionary<string, string>();
             eventObject ["table"] = stream;
-            eventObject["data"] = json;
+            eventObject["data"] = AtomAPIUtils.EscapeStringValue(json);
             eventObject["auth"] = hash;
             string jsonEvent = AtomAPIUtils.DictionaryToJson(eventObject);
+
+            Debug.Log("Request body: " + jsonEvent);
 
             this.StartCoroutine(SendEventCoroutine(endpoint + "bulk", method, headers_, jsonEvent));
         }
@@ -53,6 +57,7 @@ namespace ironsource {
 
                 www = new WWW(url, null, headers);
             } else {
+                Debug.Log("Request URL: " + url);
                 www = new WWW(url, Encoding.ASCII.GetBytes(jsonEvent), headers);
             }
             yield return www;

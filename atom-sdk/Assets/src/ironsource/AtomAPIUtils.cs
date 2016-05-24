@@ -17,7 +17,7 @@ namespace ironsource {
         }
 
         public static string ListToJson(List<string> listData) {
-            return "{" + listData.Aggregate((i, j) => i + "," + j) + "}";
+            return "[" + listData.Aggregate((i, j) => i + "," + j) + "]";
         }
 
         public static string EncodeHmac(string input, byte[] key) {
