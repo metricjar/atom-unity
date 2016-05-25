@@ -22,7 +22,11 @@ public class ButtonEvent : MonoBehaviour {
                 ", \"status\": " + response.status + "}";
         };
 
-        api_.PutEvent("g8y3eironsrc_g8y3e_test.public.atom_demo_events", "{\"event_name\": \"test post\"}", 
+
+        string test = "{\"test\": \"data 1\"}";
+        string res = ironsource.IronSourceAtomUtils.EscapeStringValue(test);
+
+        api_.PutEvent("g8y3eironsrc_g8y3e_test.public.atom_demo_events", "{\"test\": \"data 1\"}", 
                       ironsource.HttpMethod.POST, callback);
     }
 
