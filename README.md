@@ -19,7 +19,8 @@ public class ButtonEvent : MonoBehaviour {
     private ironsource.IronSourceAtom api_ = null;
 
     void Start() {
-        api_ = GameObject.Find("<YOUR_GAMEOBJECT_WITH_ATTACHED_API>").GetComponent<ironsource.IronSourceAtom>();
+        api_ = GameObject.Find("<YOUR_GAMEOBJECT_WITH_ATTACHED_API>")
+                        .GetComponent<ironsource.IronSourceAtom>();
     }
 
     // send single event
@@ -56,7 +57,8 @@ Example of sending an event in JavaScript:
 private var api_ : ironsource.IronSourceAtom;
 
 function Start() {
-	api_ = GameObject.Find("<YOUR_GAMEOBJECT_WITH_ATTACHED_API>").GetComponent(ironsource.IronSourceAtom);
+	api_ = GameObject.Find("<YOUR_GAMEOBJECT_WITH_ATTACHED_API>")
+                    .GetComponent(ironsource.IronSourceAtom);
 }
 
 function ApiCallback(response : ironsource.Response) {
@@ -76,8 +78,10 @@ function onPostBulkClick() {
     events.Add("{\"event\": \"test post 2\"}");
     events.Add("{\"event\": \"test post 3\"}");
 
-    api_.PutEvents("g8y3eironsrc_g8y3e_test.public.g8y3etest", events, ironsource.HttpMethod.POST, ApiCallback);
+    api_.PutEvents("g8y3eironsrc_g8y3e_test.public.g8y3etest", events, 
+                   ironsource.HttpMethod.POST, ApiCallback);
 }
+```
 
 ### License
 MIT
