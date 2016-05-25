@@ -3,8 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-
-
 public class ButtonEvent : MonoBehaviour {
     private ironsource.IronSourceAtom api_ = null;
 
@@ -26,13 +24,18 @@ public class ButtonEvent : MonoBehaviour {
                       ironsource.HttpMethod.GET);
     }
 
+    // antoher way of using api callback
+    public static void ApiCallback(ironsource.Response response) {
+        Debug.Log("from static callback: status = " + response.status); 
+    }
+
     public void onPostBulkClick() {
         List<string> events = new List<string>(); 
         events.Add("{\"event\": \"test post 1\"}");
         events.Add("{\"event\": \"test post 2\"}");
         events.Add("{\"event\": \"test post 3\"}");
 
-        api_.PutEvents("g8y3eironsrc_g8y3e_test.public.g8y3etest", events);
+        api_.PutEvents("g8y3eironsrc_g8y3e_test.public.g8y3etest", events, ironsource.HttpMethod.POST, ButtonEvent.ApiCallback);
     }
 
     public void onGetBulkClick() {
