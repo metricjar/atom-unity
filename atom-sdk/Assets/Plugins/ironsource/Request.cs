@@ -64,7 +64,7 @@ namespace ironsource {
                 }
             } else {
                 status = 200;
-                data = "success";
+                data = www.text;
             }
 
             if (callback_ != null) {

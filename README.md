@@ -83,6 +83,11 @@ function onPostBulkClick() {
 }
 ```
 
+
+### Example
+
+![alt text][example]
+
 ### License
 MIT
 
@@ -90,3 +95,4 @@ MIT
 [license-url]: LICENSE
 [docs-image]: https://img.shields.io/badge/docs-latest-blue.svg
 [docs-url]: https://ironsource.github.io/atom-unity/
+[example]: https://cloud.githubusercontent.com/assets/1713228/15546177/954a8b6a-22a7-11e6-8017-1a27bde809a5.png "example"
