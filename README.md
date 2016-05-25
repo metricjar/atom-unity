@@ -66,19 +66,19 @@ function ApiCallback(response : ironsource.Response) {
 }
 
 // send single event
-function onPostClick(){
+function OnPostClick(){
     api_.PutEvent("<YOUR_STREAM_NAME>", "{\"event_name\": \"test post\"}", 
                   ironsource.HttpMethod.POST, ApiCallback);
 }
 
 //send list of events
-function onPostBulkClick() {
+function OnPostBulkClick() {
     var events :List.<String> = new List.<String>();
-    events.Add("{\"event\": \"test post 1\"}");
-    events.Add("{\"event\": \"test post 2\"}");
-    events.Add("{\"event\": \"test post 3\"}");
+    events.Add("{\"name\": \"iron 1\"}");
+    events.Add("{\"name\": \"iron 2\"}");
+    events.Add("{\"name\": \"iron 3\"}");
 
-    api_.PutEvents("g8y3eironsrc_g8y3e_test.public.g8y3etest", events, 
+    api_.PutEvents("<YOUR_STREAM_NAME>", events, 
                    ironsource.HttpMethod.POST, ApiCallback);
 }
 ```
