@@ -7,7 +7,8 @@ import System.Collections.Generic;
 private var api_ : ironsource.IronSourceAtom;
 
 function Start() {
-	api_ = GameObject.Find("test_scene_gui").GetComponent(ironsource.IronSourceAtom);
+	api_ = new ironsource.IronSourceAtom(transform);       
+    api_.SetAuth("yYFxqzZj2AYO2ytya5hsPAwTbyY40b");
 }
 
 function ApiCallback(response : ironsource.Response) {

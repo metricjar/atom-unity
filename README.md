@@ -19,8 +19,8 @@ public class ButtonEvent : MonoBehaviour {
     private ironsource.IronSourceAtom api_ = null;
 
     void Start() {
-        api_ = GameObject.Find("<YOUR_GAMEOBJECT_WITH_ATTACHED_API>")
-                        .GetComponent<ironsource.IronSourceAtom>();
+        api_ = new ironsource.IronSourceAtom(transform);       
+        api_.SetAuth("<YOUR_AUTH_KEY>");
     }
 
     // send single event
@@ -57,8 +57,8 @@ Example of sending an event in JavaScript:
 private var api_ : ironsource.IronSourceAtom;
 
 function Start() {
-	api_ = GameObject.Find("<YOUR_GAMEOBJECT_WITH_ATTACHED_API>")
-                    .GetComponent(ironsource.IronSourceAtom);
+	api_ = new ironsource.IronSourceAtom(transform);       
+    api_.SetAuth("<YOUR_AUTH_KEY>");
 }
 
 function ApiCallback(response : ironsource.Response) {

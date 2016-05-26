@@ -8,7 +8,8 @@ public class ButtonEvent : MonoBehaviour {
     private ironsource.IronSourceAtom api_ = null;
 
     void Start() {
-        api_ = GameObject.Find("test_scene_gui").GetComponent<ironsource.IronSourceAtom>();
+        api_ = new ironsource.IronSourceAtom(transform);       
+        api_.SetAuth("yYFxqzZj2AYO2ytya5hsPAwTbyY40b");
     }
 
     public void onPostClick(){
@@ -21,10 +22,6 @@ public class ButtonEvent : MonoBehaviour {
             text.text = "{ \"err\": " + errorStr + ", \"data\": " + dataStr +
                 ", \"status\": " + response.status + "}";
         };
-
-
-        string test = "{\"test\": \"data 1\"}";
-        string res = ironsource.IronSourceAtomUtils.EscapeStringValue(test);
 
         api_.PutEvent("g8y3eironsrc_g8y3e_test.public.atom_demo_events", "{\"test\": \"data 1\"}", 
                       ironsource.HttpMethod.POST, callback);

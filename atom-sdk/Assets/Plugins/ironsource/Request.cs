@@ -47,21 +47,12 @@ namespace ironsource {
 
             if (!string.IsNullOrEmpty(www.error)) {
                 try {
-                    status = Convert.ToInt32(www.error);
+                    string[] errors = www.error.Split(' ');
+                    status = Convert.ToInt32(errors[0]);
                 } catch(Exception) {
                 }
 
-                switch (status) {
-                case 400:
-                    error = "Invalid JSON / No data / Missing data or table";
-                    break;
-                case 401:
-                    error = "Auth Error";
-                    break;
-                default:
-                    error = "Unknown error";
-                    break;
-                }
+                error = www.text;
             } else {
                 status = 200;
                 data = www.text;
