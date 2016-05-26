@@ -161,6 +161,15 @@ namespace ironsource {
             SendEventCoroutine(endpoint_ + "bulk", method, headers_, jsonEvent, callback);
         }
 
+        public void Health(Action<Response> callback = null) {
+            var eventObject = new Dictionary<string, string>();
+            eventObject ["table"] = "helth_check";
+            eventObject["data"] = null;
+            string jsonEvent = IronSourceAtomUtils.DictionaryToJson(eventObject);
+
+            SendEventCoroutine(endpoint_, HttpMethod.GET, headers_, jsonEvent, callback);
+        }
+
         private void SendEventCoroutine(string url, HttpMethod method, Dictionary<string, string> headers,
                                         string data, Action<Response> callback) {
 

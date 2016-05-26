@@ -15,13 +15,20 @@ function ApiCallback(response : ironsource.Response) {
  	Debug.Log("from callback: status = " + response.status); 	
 }
 
+function ApiHealthCallback(response : ironsource.Response) {
+	Debug.Log("from health callback: status = " + response.status); 
+}
+
 function onPostClick(){
+	api_.Health(ApiHealthCallback);
+
     api_.PutEvent("g8y3eironsrc_g8y3e_test.public.atom_demo_events", "{\"event_name\": \"test post\"}", 
                   ironsource.HttpMethod.POST, ApiCallback);
 }
 
 function onGetClick(){
 	Debug.Log("Test");
+	api_.Health(ApiHealthCallback);
 
     api_.PutEvent("g8y3eironsrc_g8y3e_test.public.atom_demo_events", "{\"event_name\": \"test get\"}", 
                   ironsource.HttpMethod.GET, ApiCallback);
