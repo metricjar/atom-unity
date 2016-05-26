@@ -9,6 +9,12 @@ using System.Linq;
 
 namespace ironsource {
     public class IronSourceAtomUtils {
+        /**
+         * Convert Dictionary to json string
+         * 
+         * @param {Dictionary<string, string>} dictData
+         * 
+         **/
         public static string DictionaryToJson(Dictionary<string, string> dictData) {
             var entries = dictData.Select(entryObject =>
             string.Format("\"{0}\": \"{1}\"", entryObject.Key, entryObject.Value));
@@ -16,10 +22,23 @@ namespace ironsource {
             return "{" + entries.Aggregate((i, j) => i + "," + j) + "}";
         }
 
+        /**
+         * Convert List to json string
+         * 
+         * @param {List<string>} listData
+         * 
+         **/
         public static string ListToJson(List<string> listData) {
             return "[" + listData.Aggregate((i, j) => i + "," + j) + "]";
         }
 
+        /**
+         * Encode data to HMACSHA256
+         * 
+         * @param {string} input - data to encode
+         * @param {byte[]} key
+         * 
+         **/
         public static string EncodeHmac(string input, byte[] key) {
             using (HMACSHA256 hmac = new HMACSHA256(key)) {
             byte[] byteArray = Encoding.ASCII.GetBytes(input);
@@ -27,11 +46,23 @@ namespace ironsource {
             }
         }
 
+        /**
+         * Encode data to base64
+         * 
+         * @param {string} data - data to encode
+         * 
+         **/
         public static string Base64Encode(string data) {
             var dataBytes = System.Text.Encoding.UTF8.GetBytes(data);
             return System.Convert.ToBase64String(dataBytes);
         }
 
+        /**
+         * Escape data in string
+         * 
+         * @param {string} value
+         * 
+         **/
         public static string EscapeStringValue(string value) {
             const char BACK_SLASH = '\\';
             const char SLASH = '/';

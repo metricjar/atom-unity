@@ -13,8 +13,17 @@ namespace ironsource {
 
         Action<Response> callback_;
 
+        /**
+         * Constructor for Reqeuest
+         * 
+         * @param {string} url
+         * @param {string} data
+         * @param {Dictionary<string, string>} headers
+         * @param {Action<Response>} callback
+         * 
+         **/
         public Request(string url, string data, Dictionary<string, string> headers, 
-                Action<Response> callback) {
+                        Action<Response> callback) {
             url_ = url;
             data_ = data;
             headers_ = headers;
@@ -22,6 +31,10 @@ namespace ironsource {
             callback_ = callback;
         }
 
+        /**
+         * GET request to server
+         * 
+         **/
         public IEnumerator Get() {
             string url = url_ + "?data=" + IronSourceAtomUtils.Base64Encode(data_);
             Debug.Log("Request URL: " + url);
@@ -32,6 +45,10 @@ namespace ironsource {
             ReadResponse(www);
         }
 
+        /**
+         * POST request to server
+         * 
+         **/
         public IEnumerator Post() {
             Debug.Log("Request URL: " + url_);
             WWW www = new WWW(url_, Encoding.ASCII.GetBytes(data_), headers_);
@@ -40,6 +57,13 @@ namespace ironsource {
             ReadResponse(www);
         }
 
+
+        /**
+         * Read response from WWW object
+         * 
+         * @param {WWW} www - object with response information
+         * 
+         **/
         private void ReadResponse(WWW www) {
             string error = null;
             string data = null;

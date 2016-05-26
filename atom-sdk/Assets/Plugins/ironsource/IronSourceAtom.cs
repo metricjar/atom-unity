@@ -18,7 +18,13 @@ namespace ironsource {
         private Dictionary<string, string> headers_ = new Dictionary<string, string>();
         private IronSourceCoroutineHandler coroutine_handler_ = null;
         private Transform parent_transform_ = null;
-
+        
+        /**
+        * API constructor
+        * 
+        * @param {Transform} transform - object where will be attached IronSourceCoroutineHandler
+        * 
+        **/
         public IronSourceAtom(Transform transform) {
             parent_transform_ = transform;
 
@@ -31,16 +37,34 @@ namespace ironsource {
             headers_.Add("x-ironsource-atom-sdk-version", IronSourceAtom.API_VERSION_);
         }
 
+        /**
+        * API destructor
+        * 
+        * Clear craeted IronSourceCoroutineHandler
+        * 
+        **/
         ~IronSourceAtom() {
             if (coroutine_handler_ != null) {
                 UnityEngine.Object.Destroy(coroutine_handler_);
             }
         }
 
+        /**
+        * Set Auth Key for stream
+        * 
+        * @param {string} authKey - secret key for stream
+        * 
+        **/
         public void SetAuth(string authKey) {
             authKey_ = authKey;
         }
 
+        /**
+        * Set endpoint for send data
+        * 
+        * @param {string} endpoint - address of server
+        * 
+        **/
         public void SetEndpoint(string endpoint) {
             endpoint_ = endpoint;
         }
@@ -161,6 +185,12 @@ namespace ironsource {
             SendEventCoroutine(endpoint_ + "bulk", method, headers_, jsonEvent, callback);
         }
 
+        /**
+         *  Check health of server
+         * 
+         * @param {Action<Response>} callback - receive response from server
+         * 
+         **/
         public void Health(Action<Response> callback = null) {
             var eventObject = new Dictionary<string, string>();
             eventObject ["table"] = "helth_check";
@@ -170,6 +200,16 @@ namespace ironsource {
             SendEventCoroutine(endpoint_, HttpMethod.GET, headers_, jsonEvent, callback);
         }
 
+        /**
+         * Sending async data
+         * 
+         * @param {string} url
+         * @param {HttpMethod} method - POST or GET method 
+         * @param {Dictionary<string, string>} headers 
+         * @param {string} data - request data
+         * @param {Action<Response>} callback - receive response from server
+         * 
+         **/
         private void SendEventCoroutine(string url, HttpMethod method, Dictionary<string, string> headers,
                                         string data, Action<Response> callback) {
 
