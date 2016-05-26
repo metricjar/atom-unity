@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace ironsource {
-    internal class CoroutineHandler : MonoBehaviour {
+    internal class IronSourceCoroutineHandler : MonoBehaviour {
     }
 
     public class IronSourceAtom {
@@ -16,15 +16,15 @@ namespace ironsource {
         private string authKey_ = "";
 
         private Dictionary<string, string> headers_ = new Dictionary<string, string>();
-        private CoroutineHandler coroutine_handler_ = null;
+        private IronSourceCoroutineHandler coroutine_handler_ = null;
         private Transform parent_transform_ = null;
 
         public IronSourceAtom(Transform transform) {
             parent_transform_ = transform;
 
-            coroutine_handler_ = parent_transform_.gameObject.GetComponent<CoroutineHandler>();
+            coroutine_handler_ = parent_transform_.gameObject.GetComponent<IronSourceCoroutineHandler>();
             if (coroutine_handler_ == null) {
-                coroutine_handler_ = parent_transform_.gameObject.AddComponent<CoroutineHandler>();
+                coroutine_handler_ = parent_transform_.gameObject.AddComponent<IronSourceCoroutineHandler>();
             }
 
             headers_.Add("x-ironsource-atom-sdk-type", "unity");
