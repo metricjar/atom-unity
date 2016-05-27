@@ -12,7 +12,7 @@ namespace ironsource {
     public class IronSourceAtom {
         private static string API_VERSION_ = "V1";
 
-        private string endpoint_ = "https://track.atom-data.io/";
+        private string endpoint_ = "https://track.atom-data.io";
         private string authKey_ = "";
 
         private Dictionary<string, string> headers_ = new Dictionary<string, string>();

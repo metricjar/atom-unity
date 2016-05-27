@@ -73,10 +73,13 @@ namespace ironsource {
                 try {
                     string[] errors = www.error.Split(' ');
                     status = Convert.ToInt32(errors[0]);
+
+                    error = www.text;
                 } catch(Exception) {
+                    error = www.error;
                 }
 
-                error = www.text;
+
             } else {
                 status = 200;
                 data = www.text;

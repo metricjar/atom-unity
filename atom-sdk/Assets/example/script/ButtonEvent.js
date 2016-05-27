@@ -1,7 +1,8 @@
 ﻿#pragma strict
-import UnityEngine;
+
+import UnityEngine.UI;
+
 import System;
-import System.Collections;
 import System.Collections.Generic;
 
 private var api_ : ironsource.IronSourceAtom;
@@ -12,7 +13,15 @@ function Start() {
 }
 
 function ApiCallback(response : ironsource.Response) {
- 	Debug.Log("from callback: status = " + response.status); 	
+ 	Debug.Log("from callback: status = " + response.status); 
+
+	var text : Text = GameObject.Find("response_data").GetComponent.<Text>();
+
+	var errorStr = (response.error == null) ? "null" : "\"" + response.error + "\"";
+    var dataStr = (response.data == null) ? "null" : "\"" + response.data + "\"";
+
+    text.text = "{ \"err\": " + errorStr + ", \"data\": " + dataStr +
+        ", \"status\": " + response.status + "}";	
 }
 
 function ApiHealthCallback(response : ironsource.Response) {
