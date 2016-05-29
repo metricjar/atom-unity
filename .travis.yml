@@ -28,7 +28,7 @@ script:
   - xbuild /p:Configuration=Release ./atom-sdk/test/atom-unity-test.sln
   #- ./testrunner/OpenCover.4.6.166/tools/OpenCover.Console.exe -register::Path64 -filter:"+[*]*" -target:"./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe" -targetargs:"/noshadow /domain:single atom-sdk/test/bin/Release/test.dll" -output:coverage.xml
   #- ./testrunner/coveralls.io.1.3.4/tools/coveralls.net.exe --opencover coverage.xml
-  - mono --profile=monocov:outfile=monocovCoverage.cov,+test ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./atom-sdk/test/bin/Release/test.dll
+  - mono --profile=monocov:outfile=monocovCoverage.cov,+Assembly-CSharp-firstpass ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./atom-sdk/test/bin/Release/test.dll
   - monocov --export-xml=monocovCoverage monocovCoverage.cov
   - ls monocovCoverage
   - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
