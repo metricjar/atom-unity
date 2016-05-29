@@ -3,7 +3,7 @@ os:
 language: csharp
 solution: ./atom-sdk/atom-sdk.sln
 install:
-  - nuget restore ./atom-sdk/atom-sdk.sln
+ # - nuget restore ./atom-sdk/atom-sdk.sln
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 script:
  # - xbuild /p:Configuration=Release ./atom-sdk/atom-sdk.sln
