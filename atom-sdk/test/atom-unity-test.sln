@@ -14,4 +14,9 @@ Global
 		{5B48F02B-0521-468F-B5F3-6395C9EF93EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B48F02B-0521-468F-B5F3-6395C9EF93EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.VersionControlPolicy = $1
+		$1.inheritsSet = Mono
+	EndGlobalSection
 EndGlobal

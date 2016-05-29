@@ -33,10 +33,10 @@
       <HintPath>..\..\..\..\..\..\soft\NUnit-2.6.4\bin\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp">
-      <HintPath>bin\Release\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\Temp\bin\Release\Assembly-CSharp.dll</HintPath>
     </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>bin\Release\Assembly-CSharp-firstpass.dll</HintPath>
+      <HintPath>..\Temp\bin\Release\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
