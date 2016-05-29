@@ -10,11 +10,11 @@ namespace ironsource {
         public class IronSourceAtomUtilsTest {
             [Test()]
             public void TestDictionaryToJson() {
-                string expectedStr = "{\"test\": \"data 1\",\"test\": \"data 2\"}";
+                string expectedStr = "{\"test 1\": \"data 1\",\"test 2\": \"data 2\"}";
 
                 Dictionary<string, string> testDict = new Dictionary<string, string>();
-                testDict.Add("test", "data 1");
-                testDict.Add("test", "data 2");
+                testDict.Add("test 1", "data 1");
+                testDict.Add("test 2", "data 2");
 
                 Assert.AreEqual(expectedStr, ironsource.IronSourceAtomUtils.DictionaryToJson(testDict));
             }
