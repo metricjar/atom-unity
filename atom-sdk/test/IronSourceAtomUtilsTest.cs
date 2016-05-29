@@ -13,7 +13,7 @@ namespace ironsource {
                 string expectedStr = "{\"test\": \"data\"}";
 
                 Dictionary<string, string> testDict = new Dictionary<string, string>();
-                testDict.Add("test", "data");
+                testDict.Add("test", "data1");
 
                 Assert.AreEqual(expectedStr, ironsource.IronSourceAtomUtils.DictionaryToJson(testDict));
             }

@@ -3,6 +3,7 @@
 [![License][license-image]][license-url]
 [![Docs][docs-image]][docs-url]
 [![Build status][travis-image]][travis-url]
+[![Coverage Status][coverage-image]][coverage-url]
 
 atom-unity is the official [ironSource.atom](http://www.ironsrc.com/data-flow-management) SDK for the Unity 3D engine.
 
@@ -98,4 +99,6 @@ MIT
 [docs-url]: https://ironsource.github.io/atom-unity/
 [travis-image]: https://travis-ci.org/ironSource/atom-unity.svg?branch=feature%2FISA-226
 [travis-url]: https://travis-ci.org/ironSource/atom-unity
+[coverage-image]: https://coveralls.io/repos/github/ironSource/atom-unity/badge.svg?branch=feature%2FISA-226
+[coverage-url]: https://coveralls.io/github/ironSource/atom-unity?branch=feature%2FISA-226
 [example]: https://cloud.githubusercontent.com/assets/1713228/15546177/954a8b6a-22a7-11e6-8017-1a27bde809a5.png "example"
