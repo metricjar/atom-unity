@@ -1,0 +1,17 @@
+os:
+  - linux
+  - osx
+language: csharp
+solution: ./atom-sdk/atom-sdk.sln
+install:
+  - nuget restore ./atom-sdk/atom-sdk.sln
+  - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release ./atom-sdk/atom-sdk.sln
+  - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./atom-sdk/test/bin/Release/test.dll
+
+# before_install:
+#     - sudo apt-get install python-software-properties 
+#     - sudo apt-add-repository -y ppa:libreoffice/libreoffice-4-2
+#     - sudo apt-get update
+#     - sudo apt-get install doxygen
