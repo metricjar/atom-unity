@@ -6,7 +6,8 @@ namespace ironsource {
         [TestFixture()]
         public class IronSourceAtomTest {
             [Test()]
-            public void TestPostData() {
+            public void TestCreateMonoScript() {
+                
             }
         }
     }
