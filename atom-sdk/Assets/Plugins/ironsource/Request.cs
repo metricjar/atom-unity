@@ -11,30 +11,66 @@ namespace ironsource {
         private string data_;
         private Dictionary<string, string> headers_;
 
-        Action<Response> callback_;
+        Action<Response> callbackAction_ = null;
 
-        /**
-         * Constructor for Reqeuest
-         * 
-         * @param {string} url
-         * @param {string} data
-         * @param {Dictionary<string, string>} headers
-         * @param {Action<Response>} callback
-         * 
-         **/
+        string callbackStr_ = null;
+        GameObject parrentGameObject_ = null;
+
+        /// <summary>
+        /// Constructor for Reqeuest
+        /// </summary>
+        /// <param name="url">
+        /// A <see cref="string"/> for server address.
+        /// </param>
+        /// <param name="data">
+        /// A <see cref="string"/> for sending data.
+        /// </param> 
+        /// <param name="headers">
+        /// A <see cref="Dictionary<string, string>"/> for sending headers.
+        /// </param> 
+        /// <param name="callback">
+        /// A <see cref="Action<Response>"/> for get response data.
+        /// </param>        
         public Request(string url, string data, Dictionary<string, string> headers, 
                         Action<Response> callback) {
             url_ = url;
             data_ = data;
             headers_ = headers;
 
-            callback_ = callback;
+            callbackAction_ = callback;
         }
 
-        /**
-         * GET request to server
-         * 
-         **/
+        /// <summary>
+        /// Constructor for Reqeuest
+        /// </summary>
+        /// <param name="url">
+        /// A <see cref="string"/> for server address.
+        /// </param>
+        /// <param name="data">
+        /// A <see cref="string"/> for sending data.
+        /// </param> 
+        /// <param name="headers">
+        /// A <see cref="Dictionary<string, string>"/> for sending headers.
+        /// </param> 
+        /// <param name="callback">
+        /// A <see cref="string"/> for get response data.
+        /// </param>    
+        /// <param name="parrentGameObject">
+        /// A <see cref="GameObject"/> for parrent GameObject for callback.
+        /// </param>           
+        public Request(string url, string data, Dictionary<string, string> headers, 
+                       string callback, GameObject parrentGameObject) {
+            url_ = url;
+            data_ = data;
+            headers_ = headers;
+
+            callbackStr_ = callback;
+            parrentGameObject_ = parrentGameObject;
+        }
+
+        /// <summary>
+        /// GET request to server
+        /// </summary>
         public IEnumerator Get() {
             string url = url_ + "?data=" + IronSourceAtomUtils.Base64Encode(data_);
             Debug.Log("Request URL: " + url);
@@ -45,10 +81,9 @@ namespace ironsource {
             ReadResponse(www);
         }
 
-        /**
-         * POST request to server
-         * 
-         **/
+        /// <summary>
+        /// POST request to server
+        /// </summary>
         public IEnumerator Post() {
             Debug.Log("Request URL: " + url_);
             WWW www = new WWW(url_, Encoding.ASCII.GetBytes(data_), headers_);
@@ -58,12 +93,12 @@ namespace ironsource {
         }
 
 
-        /**
-         * Read response from WWW object
-         * 
-         * @param {WWW} www - object with response information
-         * 
-         **/
+        /// <summary>
+        /// Read response from WWW object
+        /// </summary>
+        /// <param name="www">
+        /// A <see cref="WWW"/> object with response information.
+        /// </param>    
         private void ReadResponse(WWW www) {
             string error = null;
             string data = null;
@@ -85,8 +120,12 @@ namespace ironsource {
                 data = www.text;
             }
 
-            if (callback_ != null) {
-                callback_(new Response(error, data, status));
+            if (callbackAction_ != null) {
+                callbackAction_(new Response(error, data, status));
+            }
+
+            if (callbackStr_ != null) {
+                parrentGameObject_.SendMessage(callbackStr_, new Response(error, data, status));
             }
         }
     }

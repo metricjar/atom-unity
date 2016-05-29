@@ -8,26 +8,19 @@ public class ButtonEvent : MonoBehaviour {
     private ironsource.IronSourceAtom api_ = null;
 
     void Start() {
-        api_ = new ironsource.IronSourceAtom(transform);       
+        api_ = new ironsource.IronSourceAtom(gameObject);       
         api_.SetAuth("yYFxqzZj2AYO2ytya5hsPAwTbyY40b");
     }
 
-    public void onPostClick(){
-        Action<ironsource.Response> callback = delegate(ironsource.Response response) {
-            Debug.Log("from callback: status = " + response.status); 
-            Text text = GameObject.Find("response_data").GetComponent<Text>();
-            string errorStr = (response.error == null) ? "null" : "\"" + response.error + "\"";
-            string dataStr = (response.data == null) ? "null" : "\"" + response.data + "\"";
-
-            text.text = "{ \"err\": " + errorStr + ", \"data\": " + dataStr +
-                ", \"status\": " + response.status + "}";
-        };
-
+    public void OnPostClick(){
         api_.PutEvent("g8y3eironsrc_g8y3e_test.public.atom_demo_events", "{\"test\": \"data 1\"}", 
-                      ironsource.HttpMethod.POST, callback);
+                      ironsource.HttpMethod.POST, "ApiCallbackStr");
+    }
+    public void ApiCallbackStr(ironsource.Response response) {
+        Debug.Log("response code from str: " + response.status);    
     }
 
-    public void onGetClick(){
+    public void OnGetClick(){
         api_.PutEvent("g8y3eironsrc_g8y3e_test.public.atom_demo_events", "{\"event_name\": \"test get\"}", 
                       ironsource.HttpMethod.GET, ButtonEvent.ApiCallback);
     }
@@ -40,10 +33,10 @@ public class ButtonEvent : MonoBehaviour {
         string dataStr = (response.data == null) ? "null" : "\"" + response.data + "\"";
 
         text.text = "{ \"err\": " + errorStr + ", \"data\": " + dataStr +
-            ", \"status\": " + response.status + "}";
+                        ", \"status\": " + response.status + "}";
     }
 
-    public void onPostBulkClick() {
+    public void OnPostBulkClick() {
         List<string> events = new List<string>(); 
         events.Add("{\"event\": \"test post 1\"}");
         events.Add("{\"event\": \"test post 2\"}");
@@ -53,13 +46,23 @@ public class ButtonEvent : MonoBehaviour {
                        ironsource.HttpMethod.POST, ButtonEvent.ApiCallback);
     }
 
-    public void onGetBulkClick() {
+    public void OnGetBulkClick() {
+        Action<ironsource.Response> callback = delegate(ironsource.Response response) {
+            Debug.Log("from callback: status = " + response.status); 
+            Text text = GameObject.Find("response_data").GetComponent<Text>();
+            string errorStr = (response.error == null) ? "null" : "\"" + response.error + "\"";
+            string dataStr = (response.data == null) ? "null" : "\"" + response.data + "\"";
+
+            text.text = "{ \"err\": " + errorStr + ", \"data\": " + dataStr +
+                        ", \"status\": " + response.status + "}";
+        };
+
         List<string> events = new List<string>(); 
         events.Add("{\"event\": \"test get 1\"}");
         events.Add("{\"event\": \"test get 2\"}");
         events.Add("{\"event\": \"test get 3\"}");
 
         api_.PutEvents("g8y3eironsrc_g8y3e_test.public.g8y3etest", events, 
-                       ironsource.HttpMethod.GET, ButtonEvent.ApiCallback);
+                        ironsource.HttpMethod.GET, callback);
     }
 }

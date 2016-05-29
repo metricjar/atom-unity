@@ -6,14 +6,18 @@ namespace ironsource {
         public string data;
         public int status;
 
-        /**
-         * Constructor for Response
-         * 
-         * @param {string} error
-         * @param {string} data
-         * @param {int} status
-         * s
-         **/
+        /// <summary>
+        /// Constructor for Response
+        /// </summary>
+        /// <param name="error">
+        /// A <see cref="string"/> for server reponse error message.
+        /// </param>
+        ///<param name="data">
+        /// A <see cref="string"/> for server response data.
+        /// </param>
+        ///<param name="status">
+        /// A <see cref="int"/> for server reponse status.
+        /// </param>
         public Response(string error, string data, int status) {
             this.error = error;
             this.data = data;
