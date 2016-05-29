@@ -10,10 +10,11 @@ namespace ironsource {
         public class IronSourceAtomUtilsTest {
             [Test()]
             public void TestDictionaryToJson() {
-                string expectedStr = "{\"test\": \"data\"}";
+                string expectedStr = "{\"test\": \"data 1\",\"test\": \"data 2\"}";
 
                 Dictionary<string, string> testDict = new Dictionary<string, string>();
-                testDict.Add("test", "data");
+                testDict.Add("test", "data 1");
+                testDict.Add("test", "data 2");
 
                 Assert.AreEqual(expectedStr, ironsource.IronSourceAtomUtils.DictionaryToJson(testDict));
             }
@@ -55,7 +56,7 @@ namespace ironsource {
 
                 string testData = "{\"test\": \"data 1\"}";
 
-                Assert.AreEqual(expectStr, ironsource.IronSourceAtomUtils.EscapeStringValue (testData));
+                Assert.AreEqual(expectStr, ironsource.IronSourceAtomUtils.EscapeStringValue(testData));
             }
         }
     }
