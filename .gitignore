@@ -16,7 +16,7 @@ atom-sdk/test/bin/
 ExportedObj/
 *.svd
 *.userprefs
-*.csproj
+# *.csproj
 *.pidb
 *.suo
 # *.sln
