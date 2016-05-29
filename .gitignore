@@ -24,7 +24,7 @@ ExportedObj/
 *.unityproj
 *.booproj
 *.meta
-*.mdb
+# *.mdb
 
 # ============ #
 # OS generated #
