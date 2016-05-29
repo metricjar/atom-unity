@@ -46,7 +46,6 @@
   <ItemGroup>
     <Compile Include="Assets\Plugins\ironsource\HttpMethod.cs" />
     <Compile Include="Assets\Plugins\ironsource\IronSourceAtom.cs" />
-    <Compile Include="Assets\Plugins\ironsource\IronSourceAtomTracker.cs" />
     <Compile Include="Assets\Plugins\ironsource\IronSourceAtomUtils.cs" />
     <Compile Include="Assets\Plugins\ironsource\Request.cs" />
     <Compile Include="Assets\Plugins\ironsource\Response.cs" />
