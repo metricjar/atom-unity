@@ -1,16 +1,17 @@
 mkdir doc && doxygen doxyfile
 
+REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
+REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
+
+cd atom-unity
+git config user.email "$REPO_COMMIT_AUTHOR_EMAIL"
+git config user.name "$REPO_COMMIT_AUTHOR"
+
 TARGET_BRANCH="gh-pages"
 mkdir $TARGET_BRANCH && cd $TARGET_BRANCH 
 git clone -b $TARGET_BRANCH --single-branch https://github.com/ironSource/atom-unity.git
-cp -r ../doc/* ./atom-unity
+cp -r ../doc/* .
 
-REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
-REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
-git config user.name "$REPO_COMMIT_AUTHOR"
-git config user.email "$REPO_COMMIT_AUTHOR_EMAIL"
-
-cd atom-unity
 git add .
 git commit -m "Deploy to GitHub Pages: ${SHA}"
 # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
@@ -24,4 +25,4 @@ eval `ssh-agent -s`
 ssh-add deploy_key
 
 # Now that we're all set up, we can push.
-git push $origin $TARGET_BRANCH
+git push origin $TARGET_BRANCH

@@ -1,8 +1,11 @@
 nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
 nuget install coveralls.net -Version 0.6.0 -OutputDirectory testrunner
 
+# install doxygen
 sudo apt-get install gtk-sharp2
-sudo apt-get install doxygen
+#sudo apt-get install doxygen
+sudo apt-get --no-install-recommends install doxygen
+
 # install mono cecil
 curl -sS https://api.nuget.org/packages/mono.cecil.0.9.5.4.nupkg > /tmp/mono.cecil.0.9.5.4.nupkg.zip
 unzip /tmp/mono.cecil.0.9.5.4.nupkg.zip -d /tmp/cecil
