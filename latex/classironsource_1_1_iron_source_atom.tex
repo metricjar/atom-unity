@@ -1,0 +1,202 @@
+\hypertarget{classironsource_1_1_iron_source_atom}{}\section{ironsource.\+Iron\+Source\+Atom Class Reference}
+\label{classironsource_1_1_iron_source_atom}\index{ironsource.\+Iron\+Source\+Atom@{ironsource.\+Iron\+Source\+Atom}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classironsource_1_1_iron_source_atom_a1f2f1c44c50f86c96707dc89727364a1}{Iron\+Source\+Atom} (Game\+Object game\+Object)
+\begin{DoxyCompactList}\small\item\em A\+PI constructor \end{DoxyCompactList}\item 
+void \hyperlink{classironsource_1_1_iron_source_atom_ac312a3497a16162f40ce15f65c842ce5}{Set\+Auth} (string auth\+Key)
+\begin{DoxyCompactList}\small\item\em Set Auth Key for stream \end{DoxyCompactList}\item 
+void \hyperlink{classironsource_1_1_iron_source_atom_ab1d3a0624f705ea574f5e85f92d69454}{Set\+Endpoint} (string endpoint)
+\begin{DoxyCompactList}\small\item\em Set endpoint for send data \end{DoxyCompactList}\item 
+void \hyperlink{classironsource_1_1_iron_source_atom_a00a26fb95fdf553f02db0c37b6eff0b0}{Put\+Event} (string stream, string data, Http\+Method method=Http\+Method.\+P\+O\+ST, Action$<$ \hyperlink{classironsource_1_1_response}{Response} $>$ callback=null)
+\begin{DoxyCompactList}\small\item\em Send single data to Atom server. \end{DoxyCompactList}\item 
+void \hyperlink{classironsource_1_1_iron_source_atom_a149e6839c9c0fbfa391ed1bb70deeb94}{Put\+Event} (string stream, string data, Http\+Method method=Http\+Method.\+P\+O\+ST, string callback=null, Game\+Object parrent\+Game\+Object=null)
+\begin{DoxyCompactList}\small\item\em Send single data to Atom server. \end{DoxyCompactList}\item 
+void \hyperlink{classironsource_1_1_iron_source_atom_a4b93259b96ff5bd0c223a426ec89bae8}{Put\+Events} (string stream, List$<$ string $>$ data, Http\+Method method=Http\+Method.\+P\+O\+ST, Action$<$ \hyperlink{classironsource_1_1_response}{Response} $>$ callback=null)
+\begin{DoxyCompactList}\small\item\em Send multiple events data to Atom server. \end{DoxyCompactList}\item 
+void \hyperlink{classironsource_1_1_iron_source_atom_a024d8f9658cd8abb26d809f26e720c30}{Put\+Events} (string stream, List$<$ string $>$ data, Http\+Method method=Http\+Method.\+P\+O\+ST, string callback=null, Game\+Object parrent\+Game\+Object=null)
+\begin{DoxyCompactList}\small\item\em Send multiple events data to Atom server. \end{DoxyCompactList}\item 
+void \hyperlink{classironsource_1_1_iron_source_atom_ac199992b29c72006ad9c8c6eb3745eea}{Health} (Action$<$ \hyperlink{classironsource_1_1_response}{Response} $>$ callback=null)
+\begin{DoxyCompactList}\small\item\em Check health of server \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}!Iron\+Source\+Atom@{Iron\+Source\+Atom}}
+\index{Iron\+Source\+Atom@{Iron\+Source\+Atom}!ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}}
+\subsubsection[{\texorpdfstring{Iron\+Source\+Atom(\+Game\+Object game\+Object)}{IronSourceAtom(GameObject gameObject)}}]{\setlength{\rightskip}{0pt plus 5cm}ironsource.\+Iron\+Source\+Atom.\+Iron\+Source\+Atom (
+\begin{DoxyParamCaption}
+\item[{Game\+Object}]{game\+Object}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classironsource_1_1_iron_source_atom_a1f2f1c44c50f86c96707dc89727364a1}{}\label{classironsource_1_1_iron_source_atom_a1f2f1c44c50f86c96707dc89727364a1}
+
+
+A\+PI constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Object} & Game\+Object for coroutine method call. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}!Health@{Health}}
+\index{Health@{Health}!ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}}
+\subsubsection[{\texorpdfstring{Health(\+Action$<$ Response $>$ callback=null)}{Health(Action< Response > callback=null)}}]{\setlength{\rightskip}{0pt plus 5cm}void ironsource.\+Iron\+Source\+Atom.\+Health (
+\begin{DoxyParamCaption}
+\item[{Action$<$ {\bf Response} $>$}]{callback = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classironsource_1_1_iron_source_atom_ac199992b29c72006ad9c8c6eb3745eea}{}\label{classironsource_1_1_iron_source_atom_ac199992b29c72006ad9c8c6eb3745eea}
+
+
+Check health of server 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & Action$<$\+Response$>$ for receive response from server \\
+\hline
+\end{DoxyParams}
+\index{ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}!Put\+Event@{Put\+Event}}
+\index{Put\+Event@{Put\+Event}!ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}}
+\subsubsection[{\texorpdfstring{Put\+Event(string stream, string data, Http\+Method method=\+Http\+Method.\+P\+O\+S\+T, Action$<$ Response $>$ callback=null)}{PutEvent(string stream, string data, HttpMethod method=HttpMethod.POST, Action< Response > callback=null)}}]{\setlength{\rightskip}{0pt plus 5cm}void ironsource.\+Iron\+Source\+Atom.\+Put\+Event (
+\begin{DoxyParamCaption}
+\item[{string}]{stream, }
+\item[{string}]{data, }
+\item[{Http\+Method}]{method = {\ttfamily HttpMethod.POST}, }
+\item[{Action$<$ {\bf Response} $>$}]{callback = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classironsource_1_1_iron_source_atom_a00a26fb95fdf553f02db0c37b6eff0b0}{}\label{classironsource_1_1_iron_source_atom_a00a26fb95fdf553f02db0c37b6eff0b0}
+
+
+Send single data to Atom server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & Stream name for saving data in db table \\
+\hline
+{\em data} & Stream name for saving data in db table \\
+\hline
+{\em method} & Http\+Method for P\+O\+ST or G\+ET method for do request \\
+\hline
+{\em callback} & string for response data \\
+\hline
+\end{DoxyParams}
+\index{ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}!Put\+Event@{Put\+Event}}
+\index{Put\+Event@{Put\+Event}!ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}}
+\subsubsection[{\texorpdfstring{Put\+Event(string stream, string data, Http\+Method method=\+Http\+Method.\+P\+O\+S\+T, string callback=null, Game\+Object parrent\+Game\+Object=null)}{PutEvent(string stream, string data, HttpMethod method=HttpMethod.POST, string callback=null, GameObject parrentGameObject=null)}}]{\setlength{\rightskip}{0pt plus 5cm}void ironsource.\+Iron\+Source\+Atom.\+Put\+Event (
+\begin{DoxyParamCaption}
+\item[{string}]{stream, }
+\item[{string}]{data, }
+\item[{Http\+Method}]{method = {\ttfamily HttpMethod.POST}, }
+\item[{string}]{callback = {\ttfamily null}, }
+\item[{Game\+Object}]{parrent\+Game\+Object = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classironsource_1_1_iron_source_atom_a149e6839c9c0fbfa391ed1bb70deeb94}{}\label{classironsource_1_1_iron_source_atom_a149e6839c9c0fbfa391ed1bb70deeb94}
+
+
+Send single data to Atom server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & string for name of stream \\
+\hline
+{\em data} & string for request data \\
+\hline
+{\em method} & Http\+Method for type of request \\
+\hline
+{\em callback} & string for reponse data \\
+\hline
+{\em parrent\+Game\+Object} & Game\+Object for callback call. \\
+\hline
+\end{DoxyParams}
+\index{ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}!Put\+Events@{Put\+Events}}
+\index{Put\+Events@{Put\+Events}!ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}}
+\subsubsection[{\texorpdfstring{Put\+Events(string stream, List$<$ string $>$ data, Http\+Method method=\+Http\+Method.\+P\+O\+S\+T, Action$<$ Response $>$ callback=null)}{PutEvents(string stream, List< string > data, HttpMethod method=HttpMethod.POST, Action< Response > callback=null)}}]{\setlength{\rightskip}{0pt plus 5cm}void ironsource.\+Iron\+Source\+Atom.\+Put\+Events (
+\begin{DoxyParamCaption}
+\item[{string}]{stream, }
+\item[{List$<$ string $>$}]{data, }
+\item[{Http\+Method}]{method = {\ttfamily HttpMethod.POST}, }
+\item[{Action$<$ {\bf Response} $>$}]{callback = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classironsource_1_1_iron_source_atom_a4b93259b96ff5bd0c223a426ec89bae8}{}\label{classironsource_1_1_iron_source_atom_a4b93259b96ff5bd0c223a426ec89bae8}
+
+
+Send multiple events data to Atom server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & string for name of stream \\
+\hline
+{\em data} & string for request data \\
+\hline
+{\em method} & Http\+Method for type of request \\
+\hline
+{\em callback} & Action$<$\+Response$>$ for reponse data \\
+\hline
+\end{DoxyParams}
+\index{ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}!Put\+Events@{Put\+Events}}
+\index{Put\+Events@{Put\+Events}!ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}}
+\subsubsection[{\texorpdfstring{Put\+Events(string stream, List$<$ string $>$ data, Http\+Method method=\+Http\+Method.\+P\+O\+S\+T, string callback=null, Game\+Object parrent\+Game\+Object=null)}{PutEvents(string stream, List< string > data, HttpMethod method=HttpMethod.POST, string callback=null, GameObject parrentGameObject=null)}}]{\setlength{\rightskip}{0pt plus 5cm}void ironsource.\+Iron\+Source\+Atom.\+Put\+Events (
+\begin{DoxyParamCaption}
+\item[{string}]{stream, }
+\item[{List$<$ string $>$}]{data, }
+\item[{Http\+Method}]{method = {\ttfamily HttpMethod.POST}, }
+\item[{string}]{callback = {\ttfamily null}, }
+\item[{Game\+Object}]{parrent\+Game\+Object = {\ttfamily null}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classironsource_1_1_iron_source_atom_a024d8f9658cd8abb26d809f26e720c30}{}\label{classironsource_1_1_iron_source_atom_a024d8f9658cd8abb26d809f26e720c30}
+
+
+Send multiple events data to Atom server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stream} & string for name of stream \\
+\hline
+{\em data} & string for request data \\
+\hline
+{\em method} & Http\+Method for type of request \\
+\hline
+{\em callback} & string for reponse data \\
+\hline
+{\em parrent\+Game\+Object} & Game\+Object for callback calling \\
+\hline
+\end{DoxyParams}
+\index{ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}!Set\+Auth@{Set\+Auth}}
+\index{Set\+Auth@{Set\+Auth}!ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}}
+\subsubsection[{\texorpdfstring{Set\+Auth(string auth\+Key)}{SetAuth(string authKey)}}]{\setlength{\rightskip}{0pt plus 5cm}void ironsource.\+Iron\+Source\+Atom.\+Set\+Auth (
+\begin{DoxyParamCaption}
+\item[{string}]{auth\+Key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classironsource_1_1_iron_source_atom_ac312a3497a16162f40ce15f65c842ce5}{}\label{classironsource_1_1_iron_source_atom_ac312a3497a16162f40ce15f65c842ce5}
+
+
+Set Auth Key for stream 
+
+
+\begin{DoxyParams}{Parameters}
+{\em auth\+Key} & string for secret key of stream. \\
+\hline
+\end{DoxyParams}
+\index{ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}!Set\+Endpoint@{Set\+Endpoint}}
+\index{Set\+Endpoint@{Set\+Endpoint}!ironsource\+::\+Iron\+Source\+Atom@{ironsource\+::\+Iron\+Source\+Atom}}
+\subsubsection[{\texorpdfstring{Set\+Endpoint(string endpoint)}{SetEndpoint(string endpoint)}}]{\setlength{\rightskip}{0pt plus 5cm}void ironsource.\+Iron\+Source\+Atom.\+Set\+Endpoint (
+\begin{DoxyParamCaption}
+\item[{string}]{endpoint}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classironsource_1_1_iron_source_atom_ab1d3a0624f705ea574f5e85f92d69454}{}\label{classironsource_1_1_iron_source_atom_ab1d3a0624f705ea574f5e85f92d69454}
+
+
+Set endpoint for send data 
+
+
+\begin{DoxyParams}{Parameters}
+{\em endpoint} & string for address of server \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+atom-\/sdk/\+Assets/\+Plugins/ironsource/Iron\+Source\+Atom.\+cs\end{DoxyCompactItemize}
