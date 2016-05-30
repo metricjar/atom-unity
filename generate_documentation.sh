@@ -3,8 +3,8 @@ mkdir doc && doxygen doxyfile
 REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
 REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
 
-git config user.email "$REPO_COMMIT_AUTHOR_EMAIL"
-git config user.name "$REPO_COMMIT_AUTHOR"
+git config --global user.email "$REPO_COMMIT_AUTHOR_EMAIL"
+git config --global user.name "$REPO_COMMIT_AUTHOR"
 
 TARGET_BRANCH="gh-pages"
 mkdir $TARGET_BRANCH && cd $TARGET_BRANCH 
@@ -24,6 +24,7 @@ git commit -m "Deploy to GitHub Pages: ${SHA}"
 chmod 600 ../../deploy_key
 eval `ssh-agent -s`
 ssh-add ../../deploy_key
+echo "mcfax\n"
 
 # Now that we're all set up, we can push.
 git push origin $TARGET_BRANCH
