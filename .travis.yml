@@ -1,6 +1,7 @@
 os:
   - linux
 language: csharp
+sudo: required
 install:
   - sh ./install_packages.sh
   - sh ./generate_documentation.sh
