@@ -24,7 +24,6 @@ git commit -m "Deploy to GitHub Pages: ${SHA}"
 chmod 600 ../../deploy_key
 eval `ssh-agent -s`
 ssh-add ../../deploy_key
-echo "mcfax\n"
 
 # Now that we're all set up, we can push.
 git push origin $TARGET_BRANCH
