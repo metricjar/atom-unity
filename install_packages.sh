@@ -6,6 +6,9 @@ sudo apt-get install gtk-sharp2
 #sudo apt-get install doxygen
 sudo apt-get --no-install-recommends install doxygen
 
+travis encrypt-file deploy_key
+echo "Deploy key: ${ENCRYPTION_LABEL}"
+
 # install mono cecil
 curl -sS https://api.nuget.org/packages/mono.cecil.0.9.5.4.nupkg > /tmp/mono.cecil.0.9.5.4.nupkg.zip
 unzip /tmp/mono.cecil.0.9.5.4.nupkg.zip -d /tmp/cecil
