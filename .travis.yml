@@ -3,6 +3,6 @@ os:
 language: csharp
 install:
   - sh ./install_packages.sh
-  - sh ./generate_doxumentation.sh
+  - sh ./generate_documentation.sh
 script:
   - sh ./generate_code_coverage.sh
