@@ -116,16 +116,16 @@ namespace ironsource {
         /// Send multiple events data to Atom server.
         /// </summary>
         /// <param name="stream">
-        /// A <see cref="string"/> for name of stream
+        /// <see cref="string"/> for name of stream
         /// </param>
         /// <param name="data">
-        /// A <see cref="string"/> for request data
+        /// <see cref="string"/> for request data
         /// </param>
         /// <param name="method">
-        /// A <see cref="HttpMethod"/> for type of request
+        /// <see cref="HttpMethod"/> for type of request
         /// </param>
         /// <param name="callback">
-        /// A <see cref="Action<Response>"/> for reponse data
+        /// <see cref="Action<Response>"/> for reponse data
         /// </param>
         public void PutEvents(string stream, List<string> data, HttpMethod method = HttpMethod.POST, 
                               Action<Response> callback = null) {
