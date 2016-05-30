@@ -13,7 +13,7 @@ namespace ironsource {
         /// Convert Dictionary to json string
         /// </summary>
         /// <param name="dictData">
-        /// A <see cref="Dictionary<string, string>"/> data for convert.
+        /// <see cref="Dictionary<string, string>"/> data for convert.
         /// </param>
         public static string DictionaryToJson(Dictionary<string, string> dictData) {
             var entries = dictData.Select(entryObject =>
@@ -26,7 +26,7 @@ namespace ironsource {
         /// Convert List to json string
         /// </summary>
         /// <param name="listData">
-        /// A <see cref="List<string>"/> data for convert.
+        /// <see cref="List<string>"/> data for convert.
         /// </param>
         public static string ListToJson(List<string> listData) {
             return "[" + listData.Aggregate((i, j) => i + "," + j) + "]";
@@ -36,10 +36,10 @@ namespace ironsource {
         /// Encode data to HMACSHA256
         /// </summary>
         /// <param name="input">
-        /// A <see cref="string"/> data for encode.
+        /// <see cref="string"/> data for encode.
         /// </param>
         /// <param name="key">
-        /// A <see cref="byte[]"/> key for encode.
+        /// <see cref="byte[]"/> key for encode.
         /// </param>
         public static string EncodeHmac(string input, byte[] key) {
             using (HMACSHA256 hmac = new HMACSHA256(key)) {
@@ -52,7 +52,7 @@ namespace ironsource {
         /// Encode data to base64
         /// </summary>
         /// <param name="data">
-        /// A <see cref="string"/> data to encode
+        /// <see cref="string"/> data to encode
         /// </param>      
         public static string Base64Encode(string data) {
             var dataBytes = System.Text.Encoding.UTF8.GetBytes(data);
@@ -63,7 +63,7 @@ namespace ironsource {
         /// Escape data in string
         /// </summary>
         /// <param name="value">
-        /// A <see cref="string"/> data to escape
+        /// <see cref="string"/> data to escape
         /// </param>  
         public static string EscapeStringValue(string value) {
             const char BACK_SLASH = '\\';

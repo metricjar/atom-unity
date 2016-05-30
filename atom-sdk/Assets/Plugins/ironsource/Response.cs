@@ -10,13 +10,13 @@ namespace ironsource {
         /// Constructor for Response
         /// </summary>
         /// <param name="error">
-        /// A <see cref="string"/> for server reponse error message.
+        /// <see cref="string"/> for server reponse error message.
         /// </param>
-        ///<param name="data">
-        /// A <see cref="string"/> for server response data.
+        /// <param name="data">
+        /// <see cref="string"/> for server response data.
         /// </param>
-        ///<param name="status">
-        /// A <see cref="int"/> for server reponse status.
+        /// <param name="status">
+        /// <see cref="int"/> for server reponse status.
         /// </param>
         public Response(string error, string data, int status) {
             this.error = error;

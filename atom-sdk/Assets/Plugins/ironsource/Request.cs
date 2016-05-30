@@ -20,16 +20,16 @@ namespace ironsource {
         /// Constructor for Reqeuest
         /// </summary>
         /// <param name="url">
-        /// A <see cref="string"/> for server address.
+        /// <see cref="string"/> for server address.
         /// </param>
         /// <param name="data">
-        /// A <see cref="string"/> for sending data.
+        /// <see cref="string"/> for sending data.
         /// </param> 
         /// <param name="headers">
-        /// A <see cref="Dictionary<string, string>"/> for sending headers.
+        /// <see cref="Dictionary<string, string>"/> for sending headers.
         /// </param> 
         /// <param name="callback">
-        /// A <see cref="Action<Response>"/> for get response data.
+        /// <see cref="Action<Response>"/> for get response data.
         /// </param>        
         public Request(string url, string data, Dictionary<string, string> headers, 
                         Action<Response> callback) {
@@ -44,19 +44,19 @@ namespace ironsource {
         /// Constructor for Reqeuest
         /// </summary>
         /// <param name="url">
-        /// A <see cref="string"/> for server address.
+        /// <see cref="string"/> for server address.
         /// </param>
         /// <param name="data">
-        /// A <see cref="string"/> for sending data.
+        /// <see cref="string"/> for sending data.
         /// </param> 
         /// <param name="headers">
-        /// A <see cref="Dictionary<string, string>"/> for sending headers.
+        /// <see cref="Dictionary<string, string>"/> for sending headers.
         /// </param> 
         /// <param name="callback">
-        /// A <see cref="string"/> for get response data.
+        /// <see cref="string"/> for get response data.
         /// </param>    
         /// <param name="parrentGameObject">
-        /// A <see cref="GameObject"/> for parrent GameObject for callback.
+        /// <see cref="GameObject"/> for parrent GameObject for callback.
         /// </param>           
         public Request(string url, string data, Dictionary<string, string> headers, 
                        string callback, GameObject parrentGameObject) {
@@ -97,7 +97,7 @@ namespace ironsource {
         /// Read response from WWW object
         /// </summary>
         /// <param name="www">
-        /// A <see cref="WWW"/> object with response information.
+        /// <see cref="WWW"/> object with response information.
         /// </param>    
         private void ReadResponse(WWW www) {
             string error = null;
