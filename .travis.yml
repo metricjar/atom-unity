@@ -2,13 +2,11 @@ os:
 - linux
 language: csharp
 sudo: required
-env:
-  global:
-  - ENCRYPTION_LABEL: ec711df156c6
 install:
 - sh ./install_packages.sh
-#- sudo expect ./add_deploy_key.sh
 - sh ./generate_documentation.sh
 script:
 - sh ./generate_code_coverage.sh
-
+before_install:
+- openssl aes-256-cbc -K $encrypted_ec711df156c6_key -iv $encrypted_ec711df156c6_iv
+  -in deploy_key.enc -out deploy_key -d
