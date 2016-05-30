@@ -25,7 +25,6 @@ ExportedObj/
 *.booproj
 *.meta
 # *.mdb
-deploy_key
 
 # ============ #
 # OS generated #

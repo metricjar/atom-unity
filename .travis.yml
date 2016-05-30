@@ -4,9 +4,5 @@ language: csharp
 sudo: required
 install:
 - sh ./install_packages.sh
-- sh ./generate_documentation.sh
 script:
 - sh ./generate_code_coverage.sh
-before_install:
-- openssl aes-256-cbc -K $encrypted_ec711df156c6_key -iv $encrypted_ec711df156c6_iv
-  -in deploy_key.enc -out deploy_key -d
