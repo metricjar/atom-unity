@@ -3,6 +3,7 @@ nuget install coveralls.net -Version 0.6.0 -OutputDirectory testrunner
 
 # install doxygen
 sudo apt-get install gtk-sharp2
+sudo apt-get install expect
 #sudo apt-get install doxygen
 sudo apt-get --no-install-recommends install doxygen
 
