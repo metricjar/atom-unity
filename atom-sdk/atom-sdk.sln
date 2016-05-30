@@ -1,9 +1,9 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{177B8EC3-B55E-8607-6C25-1A4F07A77490}"
+# Visual Studio 2008
+
+Project("{585D2ED8-8BB8-6853-14EE-E9422A469BDA}") = "atom-sdk", "Assembly-CSharp-firstpass.csproj", "{177B8EC3-B55E-8607-6C25-1A4F07A77490}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{9AC2E002-BCE4-9FFA-296F-AC32F6EFDC3D}"
+Project("{585D2ED8-8BB8-6853-14EE-E9422A469BDA}") = "atom-sdk", "Assembly-CSharp.csproj", "{9AC2E002-BCE4-9FFA-296F-AC32F6EFDC3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +19,9 @@ Global
 		{9AC2E002-BCE4-9FFA-296F-AC32F6EFDC3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AC2E002-BCE4-9FFA-296F-AC32F6EFDC3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AC2E002-BCE4-9FFA-296F-AC32F6EFDC3D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
@@ -54,8 +57,5 @@ Global
 		$3.inheritsSet = Mono
 		$3.inheritsScope = text/x-csharp
 		$3.scope = text/x-csharp
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

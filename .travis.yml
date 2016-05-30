@@ -7,6 +7,7 @@ install:
   - nuget install coveralls.net -Version 0.6.0 -OutputDirectory testrunner
   # install mono cecil
   - sudo apt-get install gtk-sharp2
+  - sudo apt-get install doxygen
   - curl -sS https://api.nuget.org/packages/mono.cecil.0.9.5.4.nupkg > /tmp/mono.cecil.0.9.5.4.nupkg.zip
   - unzip /tmp/mono.cecil.0.9.5.4.nupkg.zip -d /tmp/cecil
   - cp /tmp/cecil/lib/net40/Mono.Cecil.dll .
@@ -20,8 +21,14 @@ install:
   - sudo make install
   # return to source directory
   - cd ../../ironSource/atom-unity
+  # 
+  - mkdir doc && doxygen doxyfile
+  - mkdir gh-pages && cd gh-pages 
+  - git clone -b gh-pages --single-branch https://github.com/ironSource/atom-unity.git
+  - cd atom-unity && cp ../../doc .
+  - git add . && git commit -am 'added new documentation' && git push origin gh-pages
 script:
-  # insluce installed libs
+  # include installed libs
   - export LD_LIBRARY_PATH=/usr/local/lib
   # compile dll's
   - xbuild /p:Configuration=Release ./atom-sdk/atom-sdk.sln
