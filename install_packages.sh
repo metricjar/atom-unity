@@ -25,5 +25,5 @@ sudo make install
 # return to source directory
 cd ../../ironSource/atom-unity
 
-chmod 600 ../../deploy_key
-eval `ssh-agent -s`
+chmod 600 ./deploy_key
+sudo eval `ssh-agent -s`
