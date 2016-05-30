@@ -24,13 +24,14 @@ git commit -m "Deploy to GitHub Pages: ${SHA}"
 chmod 600 ../../deploy_key
 eval `ssh-agent -s`
 
-/usr/bin/expect -f - <<EOD
+#!/usr/bin/expect
 
-spawn ssh-add ../../deploy_key
+spawn ssh-add deploy_key
 expect "deploy_key:"
 send "\n"
-EOD
-#echo '\n' > ssh-add ../../deploy_key 
+
+# done
+expect eof
 
 # Now that we're all set up, we can push.
 git push origin $TARGET_BRANCH

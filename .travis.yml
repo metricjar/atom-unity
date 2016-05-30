@@ -7,7 +7,7 @@ before_install:
   -in deploy_key.enc -out deploy_key -d
 install:
 - sh ./install_packages.sh
-- sh ./generate_documentation.sh
+- sudo expect ./generate_documentation.sh
 script:
 - sh ./generate_code_coverage.sh
 
