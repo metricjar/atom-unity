@@ -25,7 +25,7 @@ install:
   - mkdir doc && doxygen doxyfile
   - mkdir gh-pages && cd gh-pages 
   - git clone -b gh-pages --single-branch https://github.com/ironSource/atom-unity.git
-  - cp ../doc ./atom-unity
+  - cp -r ../doc/* ./atom-unity
   - git add . && git commit -am 'added new documentation' && git push origin gh-pages
 script:
   # include installed libs
