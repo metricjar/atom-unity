@@ -26,14 +26,17 @@ namespace ironsource {
         protected GameObject parentGameObject_ = null;
         protected MonoBehaviour coroutineHandler_ = null;
 
+        protected bool isDebug_ = false;
+
         /// <summary>
         /// API constructor
         /// </summary>
         /// <param name="gameObject">
         /// <see cref="GameObject"/> for coroutine method call.
         /// </param>
-        public IronSourceAtom(GameObject gameObject = null) {
+        public IronSourceAtom(GameObject gameObject = null, bool isDebug = false) {
             parentGameObject_ = gameObject;
+            isDebug_ = isDebug;
 
             initCoroutineHandler();
             initHeaders();
@@ -49,6 +52,12 @@ namespace ironsource {
         protected virtual void initHeaders() {            
             headers_.Add("x-ironsource-atom-sdk-type", "unity");
             headers_.Add("x-ironsource-atom-sdk-version", IronSourceAtom.API_VERSION_);
+        }
+
+        protected void printLog(string logData) {
+            if (isDebug_) {
+                Debug.Log(logData);
+            }
         }
 
         /// <summary>
@@ -144,7 +153,7 @@ namespace ironsource {
         public void PutEvents(string stream, List<string> data, HttpMethod method = HttpMethod.POST, 
                               Action<Response> callback = null) {
             string json = IronSourceAtomUtils.ListToJson(data);
-            Debug.Log ("Key: " + authKey_);
+            printLog("Key: " + authKey_);
 
             string jsonEvent = GetRequestData(stream, json);
 
@@ -172,7 +181,7 @@ namespace ironsource {
         public void PutEvents(string stream, List<string> data, HttpMethod method = HttpMethod.POST, 
                               string callback = null, GameObject parrentGameObject = null) {
             string json = IronSourceAtomUtils.ListToJson(data);
-            Debug.Log ("Key: " + authKey_);
+            printLog("Key: " + authKey_);
 
             string jsonEvent = GetRequestData(stream, json);
 
@@ -198,7 +207,7 @@ namespace ironsource {
             eventObject["auth"] = hash;
             string jsonEvent = IronSourceAtomUtils.DictionaryToJson(eventObject);
 
-            Debug.Log("Request body: " + jsonEvent);
+            printLog("Request body: " + jsonEvent);
 
             return jsonEvent;
         }

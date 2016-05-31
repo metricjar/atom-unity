@@ -8,7 +8,7 @@ import System.Collections.Generic;
 private var api_ : ironsource.IronSourceAtom;
 
 function Start() {
-	api_ = new ironsource.IronSourceAtom(gameObject);       
+	api_ = new ironsource.IronSourceAtom(gameObject, false);       
     api_.SetAuth("yYFxqzZj2AYO2ytya5hsPAwTbyY40b");
 }
 
