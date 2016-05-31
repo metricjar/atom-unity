@@ -1,11 +1,14 @@
 # =============== #
 # Unity generated #
 # =============== #
-Temp/
+#Temp/
 Obj/
+doc/
 UnityGenerated/
 Library/
+ProjectSettings/
 Assets/AssetStoreTools*
+atom-sdk/test/bin/Debug/
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -13,13 +16,15 @@ Assets/AssetStoreTools*
 ExportedObj/
 *.svd
 *.userprefs
-*.csproj
+# *.csproj
 *.pidb
 *.suo
-*.sln
+# *.sln
 *.user
 *.unityproj
 *.booproj
+*.meta
+# *.mdb
 
 # ============ #
 # OS generated #
