@@ -169,8 +169,8 @@ namespace ironsource {
         /// <param name="callback">
         /// <see cref="Action<Response>"/> for reponse data
         /// </param>
-        public void PutEvents(string stream, List<string> data, HttpMethod method = HttpMethod.POST, 
-                              Action<Response> callback = null) {
+        public void PutEvents(string stream, List<string> data, Action<Response> callback = null) {
+            HttpMethod method = HttpMethod.POST;
             string json = IronSourceAtomUtils.ListToJson(data);
             printLog("Key: " + authKey_);
 
@@ -197,8 +197,9 @@ namespace ironsource {
         /// <param name="parrentGameObject">
         /// <see cref="GameObject"/> for callback calling
         /// </param>
-        public void PutEvents(string stream, List<string> data, HttpMethod method = HttpMethod.POST, 
-                              string callback = null, GameObject parrentGameObject = null) {
+        public void PutEvents(string stream, List<string> data, string callback = null, 
+                              GameObject parrentGameObject = null) {
+            HttpMethod method = HttpMethod.POST;
             string json = IronSourceAtomUtils.ListToJson(data);
             printLog("Key: " + authKey_);
 
@@ -238,12 +239,7 @@ namespace ironsource {
         /// <see cref="Action<Response>"/> for receive response from server
         /// </param>      
         public void Health(Action<Response> callback = null) {
-            var eventObject = new Dictionary<string, string>();
-            eventObject["table"] = "helth_check";
-            eventObject["data"] = null;
-            string jsonEvent = IronSourceAtomUtils.DictionaryToJson(eventObject);
-
-            SendEventCoroutine(endpoint_, HttpMethod.GET, headers_, jsonEvent, callback);
+            SendEventCoroutine(endpoint_ + "health", HttpMethod.GET, headers_, "", callback);
         }
 
         /// <summary>

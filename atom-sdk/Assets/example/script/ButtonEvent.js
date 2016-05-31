@@ -10,7 +10,7 @@ private var api_ : ironsource.IronSourceAtom;
 function Start() {
 	api_ = new ironsource.IronSourceAtom(gameObject);  
 	api_.EnableDebug(true);     
-    api_.SetAuth("yYFxqzZj2AYO2ytya5hsPAwTbyY40b");
+    api_.SetAuth("");
 }
 
 function ApiCallback(response : ironsource.Response) {
@@ -32,15 +32,14 @@ function ApiHealthCallback(response : ironsource.Response) {
 function OnPostClick(){
 	api_.Health(ApiHealthCallback);
 
-    api_.PutEvent("g8y3eironsrc_g8y3e_test.public.atom_demo_events", "{\"event_name\": \"test post\"}", 
+    api_.PutEvent("ibtest", "{\"event_name\": \"test post\"}", 
                   	ironsource.HttpMethod.POST, ApiCallback);
 }
 
 function OnGetClick(){
-	Debug.Log("Test");
 	api_.Health(ApiHealthCallback);
 
-    api_.PutEvent("g8y3eironsrc_g8y3e_test.public.atom_demo_events", "{\"event_name\": \"test get\"}", 
+    api_.PutEvent("ibtest", "{\"event_name\": \"test get\"}", 
                   	ironsource.HttpMethod.GET, ApiCallback);
 }
 
@@ -50,14 +49,5 @@ function OnPostBulkClick() {
     events.Add("{\"event\": \"test post 2\"}");
     events.Add("{\"event\": \"test post 3\"}");
 
-    api_.PutEvents("g8y3eironsrc_g8y3e_test.public.g8y3etest", events, ironsource.HttpMethod.POST, ApiCallback);
-}
-
-function OnGetBulkClick() {
-    var events :List.<String> = new List.<String>();
-    events.Add("{\"event\": \"test get 1\"}");
-    events.Add("{\"event\": \"test get 2\"}");
-    events.Add("{\"event\": \"test get 3\"}");
-
-    api_.PutEvents("g8y3eironsrc_g8y3e_test.public.g8y3etest", events, ironsource.HttpMethod.GET, ApiCallback);
+    api_.PutEvents("ibtest", events, ApiCallback);
 }

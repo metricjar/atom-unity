@@ -9,20 +9,21 @@ public class ButtonEvent : MonoBehaviour {
 
     void Start() {
         api_ = new ironsource.IronSourceAtom(gameObject);   
-        api_.EnableDebug(true);
-        api_.SetAuth("yYFxqzZj2AYO2ytya5hsPAwTbyY40b");
+        api_.EnableDebug(false);
+        api_.SetAuth("");
     }
 
     public void OnPostClick(){
-        api_.PutEvent("g8y3eironsrc_g8y3e_test.public.atom_demo_events", "{\"test\": \"data 1\"}", 
-                      ironsource.HttpMethod.POST, "ApiCallbackStr");
+        api_.PutEvent("ibtest", "{\"test\": \"data 1\"}", 
+            ironsource.HttpMethod.POST, "ApiCallbackStr");
     }
+
     public void ApiCallbackStr(ironsource.Response response) {
         Debug.Log("response code from str: " + response.status);    
     }
 
     public void OnGetClick(){
-        api_.PutEvent("g8y3eironsrc_g8y3e_test.public.atom_demo_events", "{\"event_name\": \"test get\"}", 
+        api_.PutEvent("ibtest", "{\"event_name\": \"test get\"}", 
                       ironsource.HttpMethod.GET, ButtonEvent.ApiCallback);
     }
 
@@ -43,11 +44,10 @@ public class ButtonEvent : MonoBehaviour {
         events.Add("{\"event\": \"test post 2\"}");
         events.Add("{\"event\": \"test post 3\"}");
 
-        api_.PutEvents("g8y3eironsrc_g8y3e_test.public.g8y3etest", events, 
-                       ironsource.HttpMethod.POST, ButtonEvent.ApiCallback);
+        api_.PutEvents("ibtest", events, ButtonEvent.ApiCallback);
     }
 
-    public void OnGetBulkClick() {
+    public void OnPostBulkClickDelegate() {
         Action<ironsource.Response> callback = delegate(ironsource.Response response) {
             Debug.Log("from callback: status = " + response.status); 
             Text text = GameObject.Find("response_data").GetComponent<Text>();
@@ -63,7 +63,6 @@ public class ButtonEvent : MonoBehaviour {
         events.Add("{\"event\": \"test get 2\"}");
         events.Add("{\"event\": \"test get 3\"}");
 
-        api_.PutEvents("g8y3eironsrc_g8y3e_test.public.g8y3etest", events, 
-                        ironsource.HttpMethod.GET, callback);
+        api_.PutEvents("ibtest", events, callback);
     }
 }
