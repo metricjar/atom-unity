@@ -21,7 +21,8 @@ public class ButtonEvent : MonoBehaviour {
     private ironsource.IronSourceAtom api_ = null;
 
     void Start() {
-        api_ = new ironsource.IronSourceAtom(transform);       
+        var isDebug = true;
+        api_ = new ironsource.IronSourceAtom(gameObject, isDebug);       
         api_.SetAuth("<YOUR_AUTH_KEY>");
     }
 
@@ -59,7 +60,8 @@ Example of sending an event in JavaScript:
 private var api_ : ironsource.IronSourceAtom;
 
 function Start() {
-	api_ = new ironsource.IronSourceAtom(transform);       
+    var isDebug = true;
+	api_ = new ironsource.IronSourceAtom(gameObject, isDebug);       
     api_.SetAuth("<YOUR_AUTH_KEY>");
 }
 

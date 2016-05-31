@@ -9,6 +9,8 @@ namespace ironsource {
     namespace test {   
         public class IronSourceAtomOpened : IronSourceAtom {
 
+        	public string currentData;
+
             public IronSourceAtomOpened(GameObject gameObject) : base(gameObject) {
             }
 
@@ -37,6 +39,18 @@ namespace ironsource {
 
             public string GetRequestDataOpened(string stream, string data) {
                 return this.GetRequestData(stream, data);
+            }
+
+            protected override void SendEventCoroutine(string url, HttpMethod method, 
+            							Dictionary<string, string> headers,
+                                        string data, Action<Response> callback) {
+            	currentData = data;
+            }
+
+            protected override void SendEventCoroutine(string url, HttpMethod method, 
+                Dictionary<string, string> headers,
+                string data, string callback, GameObject parrentGameObject) {
+                currentData = data;
             }
         }
            
@@ -88,6 +102,50 @@ namespace ironsource {
                     IronSourceAtomUtils.EscapeStringValue(expectedData) + "\",\"auth\": \"a2f9cfd6b52071018a90502b6db66e45a78cb29c36ab40f13938243e011ab901\"}";
 
                 Assert.AreEqual(expectedStr, api_.GetRequestDataOpened(expectedStream, expectedData));
+            }
+
+            [Test()]
+            public void TestHealth() {
+                api_.Health();
+
+                string expectedData = "{\"table\": \"helth_check\",\"data\": \"\"}";
+
+                Assert.AreEqual(expectedData, api_.currentData);
+            }
+
+            [Test()]
+            public void TestPutEvent() {
+                string expectedData = "{\"test\": \"data 1\"}";
+                string expectedStream = "test_stream";
+
+                string expectedStr = "{\"table\": \"" + expectedStream + "\",\"data\": \"" +
+                    IronSourceAtomUtils.EscapeStringValue(expectedData) + "\",\"auth\": \"a2f9cfd6b52071018a90502b6db66e45a78cb29c36ab40f13938243e011ab901\"}";
+                
+
+                // test post method
+                api_.PutEvent(expectedStream, expectedData, HttpMethod.POST, null);
+                Assert.AreEqual(expectedStr, api_.currentData);
+            }
+
+            [Test()]
+            public void TestPutEvents() {
+                List<string> events = new List<string>(); 
+		        events.Add("{\"event\": \"test post 1\"}");
+		        events.Add("{\"event\": \"test post 2\"}");
+		        events.Add("{\"event\": \"test post 3\"}");
+
+                string expectedStream = "test_stream";
+
+                string expectedStr = "{\"table\": \"" +
+                               expectedStream + "\",\"data\": \"" +
+                               IronSourceAtomUtils.EscapeStringValue(IronSourceAtomUtils.ListToJson(events)) +
+                               "\",\"auth\": \"9630f4c8049d06f27a8c53be3eee8974bc35355b778f3cb5a8af20b7de2380ab\"}";
+
+                api_.PutEvents(expectedStream, events, HttpMethod.POST, "", null);
+                Assert.AreEqual(expectedStr, api_.currentData);
+
+                api_.PutEvents(expectedStream, events, HttpMethod.POST, null);
+                Assert.AreEqual(expectedStr, api_.currentData);
             }
         }
     }

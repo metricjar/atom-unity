@@ -220,7 +220,7 @@ namespace ironsource {
         /// </param>      
         public void Health(Action<Response> callback = null) {
             var eventObject = new Dictionary<string, string>();
-            eventObject ["table"] = "helth_check";
+            eventObject["table"] = "helth_check";
             eventObject["data"] = null;
             string jsonEvent = IronSourceAtomUtils.DictionaryToJson(eventObject);
 
@@ -245,10 +245,10 @@ namespace ironsource {
         /// <param name="callback">
         /// <see cref="Action<Response>"/> for receive response from server
         /// </param> 
-        protected void SendEventCoroutine(string url, HttpMethod method, Dictionary<string, string> headers,
+        protected virtual void SendEventCoroutine(string url, HttpMethod method, Dictionary<string, string> headers,
                                         string data, Action<Response> callback) {
 
-            Request request = new Request(url, data, headers, callback);
+            Request request = new Request(url, data, headers, callback, isDebug_);
             if (method == HttpMethod.GET) {
                 coroutineHandler_.StartCoroutine(request.Get());
             } else {
@@ -277,13 +277,13 @@ namespace ironsource {
         /// <param name="parrentGameObject">
         /// <see cref="GameObject"/> for calling callback
         /// </param>
-        protected void SendEventCoroutine(string url, HttpMethod method, Dictionary<string, string> headers,
+        protected virtual void SendEventCoroutine(string url, HttpMethod method, Dictionary<string, string> headers,
                                         string data, string callback, GameObject parrentGameObject) {
             if (parrentGameObject == null) {
                 parrentGameObject = parentGameObject_;
             }
 
-            Request request = new Request(url, data, headers, callback, parrentGameObject);
+            Request request = new Request(url, data, headers, callback, parrentGameObject, isDebug_);
             if (method == HttpMethod.GET) {
                 coroutineHandler_.StartCoroutine(request.Get());
             } else {

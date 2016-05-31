@@ -16,6 +16,8 @@ namespace ironsource {
         protected string callbackStr_ = null;
         protected GameObject parrentGameObject_ = null;
 
+        protected bool isDebug_;
+
         /// <summary>
         /// Constructor for Reqeuest
         /// </summary>
@@ -32,12 +34,13 @@ namespace ironsource {
         /// <see cref="Action<Response>"/> for get response data.
         /// </param>        
         public Request(string url, string data, Dictionary<string, string> headers, 
-                        Action<Response> callback) {
+                       Action<Response> callback, bool isDebug = false) {
             url_ = url;
             data_ = data;
             headers_ = headers;
 
             callbackAction_ = callback;
+            isDebug_ = isDebug;
         }
 
         /// <summary>
@@ -59,13 +62,14 @@ namespace ironsource {
         /// <see cref="GameObject"/> for parrent GameObject for callback.
         /// </param>           
         public Request(string url, string data, Dictionary<string, string> headers, 
-                       string callback, GameObject parrentGameObject) {
+                       string callback, GameObject parrentGameObject, bool isDebug = false) {
             url_ = url;
             data_ = data;
             headers_ = headers;
 
             callbackStr_ = callback;
             parrentGameObject_ = parrentGameObject;
+            isDebug_ = isDebug;
         }
 
         /// <summary>
@@ -73,7 +77,7 @@ namespace ironsource {
         /// </summary>
         public IEnumerator Get() {
             string url = url_ + "?data=" + IronSourceAtomUtils.Base64Encode(data_);
-            Debug.Log("Request URL: " + url);
+            printLog("Request URL: " + url);
 
             WWW www = new WWW(url, null, headers_);
             yield return www;
@@ -85,7 +89,7 @@ namespace ironsource {
         /// POST request to server
         /// </summary>
         public IEnumerator Post() {
-            Debug.Log("Request URL: " + url_);
+            printLog("Request URL: " + url_);
             WWW www = new WWW(url_, Encoding.ASCII.GetBytes(data_), headers_);
             yield return www;
 
@@ -126,6 +130,12 @@ namespace ironsource {
 
             if (callbackStr_ != null) {
                 parrentGameObject_.SendMessage(callbackStr_, new Response(error, data, status));
+            }
+        }
+
+        protected void printLog(string data) {
+            if (isDebug_) {
+                Debug.Log(data);
             }
         }
     }
