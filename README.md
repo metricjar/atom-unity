@@ -103,4 +103,4 @@ MIT
 [travis-url]: https://travis-ci.org/ironSource/atom-unity
 [coverage-image]: https://coveralls.io/repos/github/ironSource/atom-unity/badge.svg?branch=feature%2FISA-226
 [coverage-url]: https://coveralls.io/github/ironSource/atom-unity?branch=feature%2FISA-226
-[example]: https://cloud.githubusercontent.com/assets/1713228/15546177/954a8b6a-22a7-11e6-8017-1a27bde809a5.png "example"
+[example]: https://cloud.githubusercontent.com/assets/1713228/15683093/590c2386-2769-11e6-8429-14f41e937f27.png "example"
