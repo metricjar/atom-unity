@@ -21,7 +21,6 @@ public class ButtonEvent : MonoBehaviour {
     private ironsource.IronSourceAtom api_ = null;
 
     void Start() {
-        var isDebug = true;
         api_ = new ironsource.IronSourceAtom(gameObject);  
         // enabling print logs
         api_.EnableDebug(true);   
@@ -62,7 +61,6 @@ Example of sending an event in JavaScript:
 private var api_ : ironsource.IronSourceAtom;
 
 function Start() {
-    var isDebug = true;
 	api_ = new ironsource.IronSourceAtom(gameObject);  
     // enabling print logs
     api_.EnableDebug(true);        
