@@ -108,7 +108,7 @@ namespace ironsource {
             public void TestHealth() {
                 api_.Health();
 
-                string expectedData = "{\"table\": \"helth_check\",\"data\": \"\"}";
+                string expectedData = "";
 
                 Assert.AreEqual(expectedData, api_.currentData);
             }
@@ -141,10 +141,10 @@ namespace ironsource {
                                IronSourceAtomUtils.EscapeStringValue(IronSourceAtomUtils.ListToJson(events)) +
                                "\",\"auth\": \"9630f4c8049d06f27a8c53be3eee8974bc35355b778f3cb5a8af20b7de2380ab\"}";
 
-                api_.PutEvents(expectedStream, events, HttpMethod.POST, "", null);
+                api_.PutEvents(expectedStream, events, "", null);
                 Assert.AreEqual(expectedStr, api_.currentData);
 
-                api_.PutEvents(expectedStream, events, HttpMethod.POST, null);
+                api_.PutEvents(expectedStream, events, null);
                 Assert.AreEqual(expectedStr, api_.currentData);
             }
         }
