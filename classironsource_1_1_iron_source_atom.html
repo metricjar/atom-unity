@@ -23,7 +23,6 @@
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">IronSource Atom SDK for Unity 3D
    </div>
-   <div id="projectbrief">IronSource Atom is the official SDK for the Unity 3D.</div>
   </td>
  </tr>
  </tbody>
@@ -65,6 +64,9 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a> &#124;
 <a href="classironsource_1_1_iron_source_atom-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ironsource.IronSourceAtom Class Reference</div>  </div>
@@ -73,9 +75,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a1f2f1c44c50f86c96707dc89727364a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a1f2f1c44c50f86c96707dc89727364a1">IronSourceAtom</a> (GameObject gameObject)</td></tr>
-<tr class="memdesc:a1f2f1c44c50f86c96707dc89727364a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">API constructor  <a href="#a1f2f1c44c50f86c96707dc89727364a1">More...</a><br /></td></tr>
-<tr class="separator:a1f2f1c44c50f86c96707dc89727364a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a898348378a081c5be7b787410d92a7cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a898348378a081c5be7b787410d92a7cc">IronSourceAtom</a> (GameObject gameObject=null)</td></tr>
+<tr class="memdesc:a898348378a081c5be7b787410d92a7cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">API constructor  <a href="#a898348378a081c5be7b787410d92a7cc">More...</a><br /></td></tr>
+<tr class="separator:a898348378a081c5be7b787410d92a7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac312a3497a16162f40ce15f65c842ce5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#ac312a3497a16162f40ce15f65c842ce5">SetAuth</a> (string authKey)</td></tr>
 <tr class="memdesc:ac312a3497a16162f40ce15f65c842ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set Auth Key for stream  <a href="#ac312a3497a16162f40ce15f65c842ce5">More...</a><br /></td></tr>
 <tr class="separator:ac312a3497a16162f40ce15f65c842ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -97,9 +99,51 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac199992b29c72006ad9c8c6eb3745eea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#ac199992b29c72006ad9c8c6eb3745eea">Health</a> (Action&lt; <a class="el" href="classironsource_1_1_response.html">Response</a> &gt; callback=null)</td></tr>
 <tr class="memdesc:ac199992b29c72006ad9c8c6eb3745eea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check health of server  <a href="#ac199992b29c72006ad9c8c6eb3745eea">More...</a><br /></td></tr>
 <tr class="separator:ac199992b29c72006ad9c8c6eb3745eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a23b591ae92db5398eb7f6ada41005b83"><td class="memItemLeft" align="right" valign="top"><a id="a23b591ae92db5398eb7f6ada41005b83"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>initCoroutineHandler</b> ()</td></tr>
+<tr class="separator:a23b591ae92db5398eb7f6ada41005b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86bbda5e639756c03b35c40652aa25de"><td class="memItemLeft" align="right" valign="top"><a id="a86bbda5e639756c03b35c40652aa25de"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>initHeaders</b> ()</td></tr>
+<tr class="separator:a86bbda5e639756c03b35c40652aa25de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20fe75e10eaa2dd90cd7e38b4045c017"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a20fe75e10eaa2dd90cd7e38b4045c017">GetRequestData</a> (string stream, string data)</td></tr>
+<tr class="memdesc:a20fe75e10eaa2dd90cd7e38b4045c017"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create request json data  <a href="#a20fe75e10eaa2dd90cd7e38b4045c017">More...</a><br /></td></tr>
+<tr class="separator:a20fe75e10eaa2dd90cd7e38b4045c017"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a642f900f425ec91c6c03fe1833fa94a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a642f900f425ec91c6c03fe1833fa94a2">SendEventCoroutine</a> (string url, HttpMethod method, Dictionary&lt; string, string &gt; headers, string data, Action&lt; <a class="el" href="classironsource_1_1_response.html">Response</a> &gt; callback)</td></tr>
+<tr class="memdesc:a642f900f425ec91c6c03fe1833fa94a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check health of server  <a href="#a642f900f425ec91c6c03fe1833fa94a2">More...</a><br /></td></tr>
+<tr class="separator:a642f900f425ec91c6c03fe1833fa94a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8c8f9e8c47dacbdcb460edd67594275"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#ad8c8f9e8c47dacbdcb460edd67594275">SendEventCoroutine</a> (string url, HttpMethod method, Dictionary&lt; string, string &gt; headers, string data, string callback, GameObject parrentGameObject)</td></tr>
+<tr class="memdesc:ad8c8f9e8c47dacbdcb460edd67594275"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check health of server  <a href="#ad8c8f9e8c47dacbdcb460edd67594275">More...</a><br /></td></tr>
+<tr class="separator:ad8c8f9e8c47dacbdcb460edd67594275"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:abac50772ee0768afbd9c1ef0b7b9bfba"><td class="memItemLeft" align="right" valign="top"><a id="abac50772ee0768afbd9c1ef0b7b9bfba"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>endpoint_</b> = &quot;https://track.atom-data.io/&quot;</td></tr>
+<tr class="separator:abac50772ee0768afbd9c1ef0b7b9bfba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad84823360c91f74a0708452a1981f76"><td class="memItemLeft" align="right" valign="top"><a id="aad84823360c91f74a0708452a1981f76"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>authKey_</b> = &quot;&quot;</td></tr>
+<tr class="separator:aad84823360c91f74a0708452a1981f76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc77017fc4f85ab94f74704122e5e3be"><td class="memItemLeft" align="right" valign="top"><a id="acc77017fc4f85ab94f74704122e5e3be"></a>
+Dictionary&lt; string, string &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>headers_</b> = new Dictionary&lt;string, string&gt;()</td></tr>
+<tr class="separator:acc77017fc4f85ab94f74704122e5e3be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1055235525fcd4c2c2bd2da6b68bc96e"><td class="memItemLeft" align="right" valign="top"><a id="a1055235525fcd4c2c2bd2da6b68bc96e"></a>
+GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>parentGameObject_</b> = null</td></tr>
+<tr class="separator:a1055235525fcd4c2c2bd2da6b68bc96e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa433e542b171597e79d28c9aa021b776"><td class="memItemLeft" align="right" valign="top"><a id="aa433e542b171597e79d28c9aa021b776"></a>
+MonoBehaviour&#160;</td><td class="memItemRight" valign="bottom"><b>coroutineHandler_</b> = null</td></tr>
+<tr class="separator:aa433e542b171597e79d28c9aa021b776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a56cdb3372c4c7f7bf031cdbf83d82e04"><td class="memItemLeft" align="right" valign="top"><a id="a56cdb3372c4c7f7bf031cdbf83d82e04"></a>
+static string&#160;</td><td class="memItemRight" valign="bottom"><b>API_VERSION_</b> = &quot;V1.0.0&quot;</td></tr>
+<tr class="separator:a56cdb3372c4c7f7bf031cdbf83d82e04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a1f2f1c44c50f86c96707dc89727364a1"></a>
+<a id="a898348378a081c5be7b787410d92a7cc"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -110,7 +154,7 @@ Public Member Functions</h2></td></tr>
           <td class="memname">ironsource.IronSourceAtom.IronSourceAtom </td>
           <td>(</td>
           <td class="paramtype">GameObject&#160;</td>
-          <td class="paramname"><em>gameObject</em></td><td>)</td>
+          <td class="paramname"><em>gameObject</em> = <code>null</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -132,6 +176,50 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a20fe75e10eaa2dd90cd7e38b4045c017"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string ironsource.IronSourceAtom.GetRequestData </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Create request json data </p>
+<dl class="section return"><dt>Returns</dt><dd>The request data.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>string for request stream </td></tr>
+    <tr><td class="paramname">data</td><td>string for request data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="ac199992b29c72006ad9c8c6eb3745eea"></a>
 <div class="memitem">
 <div class="memproto">
@@ -400,6 +488,141 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">method</td><td>HttpMethod for type of request </td></tr>
     <tr><td class="paramname">callback</td><td>string for reponse data </td></tr>
     <tr><td class="paramname">parrentGameObject</td><td>GameObject for callback calling </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a642f900f425ec91c6c03fe1833fa94a2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ironsource.IronSourceAtom.SendEventCoroutine </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>url</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HttpMethod&#160;</td>
+          <td class="paramname"><em>method</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Dictionary&lt; string, string &gt;&#160;</td>
+          <td class="paramname"><em>headers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Action&lt; <a class="el" href="classironsource_1_1_response.html">Response</a> &gt;&#160;</td>
+          <td class="paramname"><em>callback</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check health of server </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">url</td><td>string for server address </td></tr>
+    <tr><td class="paramname">method</td><td>HttpMethod for POST or GET method </td></tr>
+    <tr><td class="paramname">headers</td><td>Dictionary&lt;string, string&gt; </td></tr>
+    <tr><td class="paramname">data</td><td>string for request data </td></tr>
+    <tr><td class="paramname">callback</td><td>Action&lt;Response&gt; for receive response from server </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ad8c8f9e8c47dacbdcb460edd67594275"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ironsource.IronSourceAtom.SendEventCoroutine </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>url</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">HttpMethod&#160;</td>
+          <td class="paramname"><em>method</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Dictionary&lt; string, string &gt;&#160;</td>
+          <td class="paramname"><em>headers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>callback</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GameObject&#160;</td>
+          <td class="paramname"><em>parrentGameObject</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check health of server </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">url</td><td>string for server address </td></tr>
+    <tr><td class="paramname">method</td><td>HttpMethod for POST or GET method </td></tr>
+    <tr><td class="paramname">headers</td><td>Dictionary&lt;string, string&gt; </td></tr>
+    <tr><td class="paramname">data</td><td>string for request data </td></tr>
+    <tr><td class="paramname">callback</td><td>string for receive response from server </td></tr>
+    <tr><td class="paramname">parrentGameObject</td><td>GameObject for calling callback </td></tr>
   </table>
   </dd>
 </dl>

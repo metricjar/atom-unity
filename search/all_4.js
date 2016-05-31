@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['ironsource',['ironsource',['../namespaceironsource.html',1,'']]],
-  ['ironsourceatom',['IronSourceAtom',['../classironsource_1_1_iron_source_atom.html#a1f2f1c44c50f86c96707dc89727364a1',1,'ironsource::IronSourceAtom']]],
-  ['ironsourceatom',['IronSourceAtom',['../classironsource_1_1_iron_source_atom.html',1,'ironsource']]],
-  ['ironsourceatomutils',['IronSourceAtomUtils',['../classironsource_1_1_iron_source_atom_utils.html',1,'ironsource']]]
+  ['get',['Get',['../classironsource_1_1_request.html#a1b7ef49206eff6bf6c71813093025df8',1,'ironsource::Request']]],
+  ['getrequestdata',['GetRequestData',['../classironsource_1_1_iron_source_atom.html#a20fe75e10eaa2dd90cd7e38b4045c017',1,'ironsource::IronSourceAtom']]]
 ];
