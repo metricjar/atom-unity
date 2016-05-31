@@ -38,7 +38,7 @@ namespace ironsource {
             }
 
             public string GetRequestDataOpened(string stream, string data) {
-                return this.GetRequestData(stream, data);
+                return base.GetRequestData(stream, data);
             }
 
             protected override void SendEventCoroutine(string url, HttpMethod method, 
