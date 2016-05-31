@@ -8,7 +8,8 @@ public class ButtonEvent : MonoBehaviour {
     private ironsource.IronSourceAtom api_ = null;
 
     void Start() {
-        api_ = new ironsource.IronSourceAtom(gameObject, true);       
+        api_ = new ironsource.IronSourceAtom(gameObject);   
+        api_.EnableDebug(true);
         api_.SetAuth("yYFxqzZj2AYO2ytya5hsPAwTbyY40b");
     }
 

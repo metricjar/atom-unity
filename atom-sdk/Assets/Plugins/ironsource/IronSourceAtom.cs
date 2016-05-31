@@ -34,14 +34,26 @@ namespace ironsource {
         /// <param name="gameObject">
         /// <see cref="GameObject"/> for coroutine method call.
         /// </param>
-        public IronSourceAtom(GameObject gameObject = null, bool isDebug = false) {
+        public IronSourceAtom(GameObject gameObject = null) {
             parentGameObject_ = gameObject;
-            isDebug_ = isDebug;
 
             initCoroutineHandler();
             initHeaders();
         }
 
+        /// <summary>
+        /// Enabling print debug information
+        /// </summary>
+        /// <param name="isDebug">
+        /// If set to <c>true</c> is debug.
+        /// </param>
+        public void EnableDebug(bool isDebug) {
+            isDebug_ = isDebug;
+        }
+
+        /// <summary>
+        /// Inits the coroutine handler.
+        /// </summary>
         protected virtual void initCoroutineHandler() {
             coroutineHandler_ = parentGameObject_.GetComponent<MonoBehaviour>();
             if (coroutineHandler_ == null) {
@@ -49,11 +61,18 @@ namespace ironsource {
             }
         }
 
+        /// <summary>
+        /// Inits the headers.
+        /// </summary>
         protected virtual void initHeaders() {            
             headers_.Add("x-ironsource-atom-sdk-type", "unity");
             headers_.Add("x-ironsource-atom-sdk-version", IronSourceAtom.API_VERSION_);
         }
 
+        /// <summary>
+        /// Prints the log.
+        /// </summary>
+        /// <param name="logData">Log data.</param>
         protected void printLog(string logData) {
             if (isDebug_) {
                 Debug.Log(logData);
