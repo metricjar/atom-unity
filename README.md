@@ -22,7 +22,9 @@ public class ButtonEvent : MonoBehaviour {
 
     void Start() {
         var isDebug = true;
-        api_ = new ironsource.IronSourceAtom(gameObject, isDebug);       
+        api_ = new ironsource.IronSourceAtom(gameObject);  
+        // enabling print logs
+        api_.EnableDebug(true);   
         api_.SetAuth("<YOUR_AUTH_KEY>");
     }
 
@@ -61,7 +63,9 @@ private var api_ : ironsource.IronSourceAtom;
 
 function Start() {
     var isDebug = true;
-	api_ = new ironsource.IronSourceAtom(gameObject, isDebug);       
+	api_ = new ironsource.IronSourceAtom(gameObject);  
+    // enabling print logs
+    api_.EnableDebug(true);        
     api_.SetAuth("<YOUR_AUTH_KEY>");
 }
 
