@@ -50,8 +50,7 @@ public class ButtonEvent : MonoBehaviour {
         events.Add("{\"name\": \"iron 2\"}");
         events.Add("{\"name\": \"iron 3\"}");
 
-        api_.PutEvents("<YOUR_STREAM_NAME>", events, 
-        			   ironsource.HttpMethod.POST, ButtonEvent.ApiCallback);
+        api_.PutEvents("<YOUR_STREAM_NAME>", events, ButtonEvent.ApiCallback);
     }
 }
 ```
@@ -84,8 +83,7 @@ function OnPostBulkClick() {
     events.Add("{\"name\": \"iron 2\"}");
     events.Add("{\"name\": \"iron 3\"}");
 
-    api_.PutEvents("<YOUR_STREAM_NAME>", events, 
-                   ironsource.HttpMethod.POST, ApiCallback);
+    api_.PutEvents("<YOUR_STREAM_NAME>", events, ApiCallback);
 }
 ```
 
