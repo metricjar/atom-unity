@@ -5,6 +5,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
+/*! \mainpage Atom SDK for Unity 3D
+ *
+ * \section intro_sec Introduction
+ *
+ * IronSource Atom is the official SDK for the Unity 3D.
+ *
+ */
 namespace ironsource {
     internal class IronSourceCoroutineHandler : MonoBehaviour {
     }
