@@ -78,6 +78,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a898348378a081c5be7b787410d92a7cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a898348378a081c5be7b787410d92a7cc">IronSourceAtom</a> (GameObject gameObject=null)</td></tr>
 <tr class="memdesc:a898348378a081c5be7b787410d92a7cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">API constructor  <a href="#a898348378a081c5be7b787410d92a7cc">More...</a><br /></td></tr>
 <tr class="separator:a898348378a081c5be7b787410d92a7cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a220880c505100e61ef3bee5ebc2b1475"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a220880c505100e61ef3bee5ebc2b1475">EnableDebug</a> (bool isDebug)</td></tr>
+<tr class="memdesc:a220880c505100e61ef3bee5ebc2b1475"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enabling print debug information  <a href="#a220880c505100e61ef3bee5ebc2b1475">More...</a><br /></td></tr>
+<tr class="separator:a220880c505100e61ef3bee5ebc2b1475"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac312a3497a16162f40ce15f65c842ce5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#ac312a3497a16162f40ce15f65c842ce5">SetAuth</a> (string authKey)</td></tr>
 <tr class="memdesc:ac312a3497a16162f40ce15f65c842ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set Auth Key for stream  <a href="#ac312a3497a16162f40ce15f65c842ce5">More...</a><br /></td></tr>
 <tr class="separator:ac312a3497a16162f40ce15f65c842ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -90,33 +93,36 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a149e6839c9c0fbfa391ed1bb70deeb94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a149e6839c9c0fbfa391ed1bb70deeb94">PutEvent</a> (string stream, string data, HttpMethod method=HttpMethod.POST, string callback=null, GameObject parrentGameObject=null)</td></tr>
 <tr class="memdesc:a149e6839c9c0fbfa391ed1bb70deeb94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send single data to Atom server.  <a href="#a149e6839c9c0fbfa391ed1bb70deeb94">More...</a><br /></td></tr>
 <tr class="separator:a149e6839c9c0fbfa391ed1bb70deeb94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b93259b96ff5bd0c223a426ec89bae8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a4b93259b96ff5bd0c223a426ec89bae8">PutEvents</a> (string stream, List&lt; string &gt; data, HttpMethod method=HttpMethod.POST, Action&lt; <a class="el" href="classironsource_1_1_response.html">Response</a> &gt; callback=null)</td></tr>
-<tr class="memdesc:a4b93259b96ff5bd0c223a426ec89bae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send multiple events data to Atom server.  <a href="#a4b93259b96ff5bd0c223a426ec89bae8">More...</a><br /></td></tr>
-<tr class="separator:a4b93259b96ff5bd0c223a426ec89bae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a024d8f9658cd8abb26d809f26e720c30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a024d8f9658cd8abb26d809f26e720c30">PutEvents</a> (string stream, List&lt; string &gt; data, HttpMethod method=HttpMethod.POST, string callback=null, GameObject parrentGameObject=null)</td></tr>
-<tr class="memdesc:a024d8f9658cd8abb26d809f26e720c30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send multiple events data to Atom server.  <a href="#a024d8f9658cd8abb26d809f26e720c30">More...</a><br /></td></tr>
-<tr class="separator:a024d8f9658cd8abb26d809f26e720c30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6a87cfec2ccecaed4a34885e72f794c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#ac6a87cfec2ccecaed4a34885e72f794c">PutEvents</a> (string stream, List&lt; string &gt; data, Action&lt; <a class="el" href="classironsource_1_1_response.html">Response</a> &gt; callback=null)</td></tr>
+<tr class="memdesc:ac6a87cfec2ccecaed4a34885e72f794c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send multiple events data to Atom server.  <a href="#ac6a87cfec2ccecaed4a34885e72f794c">More...</a><br /></td></tr>
+<tr class="separator:ac6a87cfec2ccecaed4a34885e72f794c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2343847ddf80d7c368d6b3f4da28d708"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a2343847ddf80d7c368d6b3f4da28d708">PutEvents</a> (string stream, List&lt; string &gt; data, string callback=null, GameObject parrentGameObject=null)</td></tr>
+<tr class="memdesc:a2343847ddf80d7c368d6b3f4da28d708"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send multiple events data to Atom server.  <a href="#a2343847ddf80d7c368d6b3f4da28d708">More...</a><br /></td></tr>
+<tr class="separator:a2343847ddf80d7c368d6b3f4da28d708"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac199992b29c72006ad9c8c6eb3745eea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#ac199992b29c72006ad9c8c6eb3745eea">Health</a> (Action&lt; <a class="el" href="classironsource_1_1_response.html">Response</a> &gt; callback=null)</td></tr>
 <tr class="memdesc:ac199992b29c72006ad9c8c6eb3745eea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check health of server  <a href="#ac199992b29c72006ad9c8c6eb3745eea">More...</a><br /></td></tr>
 <tr class="separator:ac199992b29c72006ad9c8c6eb3745eea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a23b591ae92db5398eb7f6ada41005b83"><td class="memItemLeft" align="right" valign="top"><a id="a23b591ae92db5398eb7f6ada41005b83"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>initCoroutineHandler</b> ()</td></tr>
+<tr class="memitem:a23b591ae92db5398eb7f6ada41005b83"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a23b591ae92db5398eb7f6ada41005b83">initCoroutineHandler</a> ()</td></tr>
+<tr class="memdesc:a23b591ae92db5398eb7f6ada41005b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inits the coroutine handler.  <a href="#a23b591ae92db5398eb7f6ada41005b83">More...</a><br /></td></tr>
 <tr class="separator:a23b591ae92db5398eb7f6ada41005b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a86bbda5e639756c03b35c40652aa25de"><td class="memItemLeft" align="right" valign="top"><a id="a86bbda5e639756c03b35c40652aa25de"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>initHeaders</b> ()</td></tr>
+<tr class="memitem:a86bbda5e639756c03b35c40652aa25de"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a86bbda5e639756c03b35c40652aa25de">initHeaders</a> ()</td></tr>
+<tr class="memdesc:a86bbda5e639756c03b35c40652aa25de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inits the headers.  <a href="#a86bbda5e639756c03b35c40652aa25de">More...</a><br /></td></tr>
 <tr class="separator:a86bbda5e639756c03b35c40652aa25de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47bb54d7e107cbcb78d07015bd46345a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a47bb54d7e107cbcb78d07015bd46345a">printLog</a> (string logData)</td></tr>
+<tr class="memdesc:a47bb54d7e107cbcb78d07015bd46345a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the log.  <a href="#a47bb54d7e107cbcb78d07015bd46345a">More...</a><br /></td></tr>
+<tr class="separator:a47bb54d7e107cbcb78d07015bd46345a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20fe75e10eaa2dd90cd7e38b4045c017"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a20fe75e10eaa2dd90cd7e38b4045c017">GetRequestData</a> (string stream, string data)</td></tr>
 <tr class="memdesc:a20fe75e10eaa2dd90cd7e38b4045c017"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create request json data  <a href="#a20fe75e10eaa2dd90cd7e38b4045c017">More...</a><br /></td></tr>
 <tr class="separator:a20fe75e10eaa2dd90cd7e38b4045c017"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a642f900f425ec91c6c03fe1833fa94a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a642f900f425ec91c6c03fe1833fa94a2">SendEventCoroutine</a> (string url, HttpMethod method, Dictionary&lt; string, string &gt; headers, string data, Action&lt; <a class="el" href="classironsource_1_1_response.html">Response</a> &gt; callback)</td></tr>
-<tr class="memdesc:a642f900f425ec91c6c03fe1833fa94a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check health of server  <a href="#a642f900f425ec91c6c03fe1833fa94a2">More...</a><br /></td></tr>
-<tr class="separator:a642f900f425ec91c6c03fe1833fa94a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad8c8f9e8c47dacbdcb460edd67594275"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#ad8c8f9e8c47dacbdcb460edd67594275">SendEventCoroutine</a> (string url, HttpMethod method, Dictionary&lt; string, string &gt; headers, string data, string callback, GameObject parrentGameObject)</td></tr>
-<tr class="memdesc:ad8c8f9e8c47dacbdcb460edd67594275"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check health of server  <a href="#ad8c8f9e8c47dacbdcb460edd67594275">More...</a><br /></td></tr>
-<tr class="separator:ad8c8f9e8c47dacbdcb460edd67594275"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa135dae37ffb4857bdb1bf5d6ab4ffd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#afa135dae37ffb4857bdb1bf5d6ab4ffd">SendEventCoroutine</a> (string url, HttpMethod method, Dictionary&lt; string, string &gt; headers, string data, Action&lt; <a class="el" href="classironsource_1_1_response.html">Response</a> &gt; callback)</td></tr>
+<tr class="memdesc:afa135dae37ffb4857bdb1bf5d6ab4ffd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check health of server  <a href="#afa135dae37ffb4857bdb1bf5d6ab4ffd">More...</a><br /></td></tr>
+<tr class="separator:afa135dae37ffb4857bdb1bf5d6ab4ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c0ae36ff3541d22bc8cbcd4492b76a7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classironsource_1_1_iron_source_atom.html#a0c0ae36ff3541d22bc8cbcd4492b76a7">SendEventCoroutine</a> (string url, HttpMethod method, Dictionary&lt; string, string &gt; headers, string data, string callback, GameObject parrentGameObject)</td></tr>
+<tr class="memdesc:a0c0ae36ff3541d22bc8cbcd4492b76a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check health of server  <a href="#a0c0ae36ff3541d22bc8cbcd4492b76a7">More...</a><br /></td></tr>
+<tr class="separator:a0c0ae36ff3541d22bc8cbcd4492b76a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -135,6 +141,9 @@ GameObject&#160;</td><td class="memItemRight" valign="bottom"><b>parentGameObjec
 <tr class="memitem:aa433e542b171597e79d28c9aa021b776"><td class="memItemLeft" align="right" valign="top"><a id="aa433e542b171597e79d28c9aa021b776"></a>
 MonoBehaviour&#160;</td><td class="memItemRight" valign="bottom"><b>coroutineHandler_</b> = null</td></tr>
 <tr class="separator:aa433e542b171597e79d28c9aa021b776"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae485ed7d3934b2dec7beadcfed0db5bc"><td class="memItemLeft" align="right" valign="top"><a id="ae485ed7d3934b2dec7beadcfed0db5bc"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>isDebug_</b> = false</td></tr>
+<tr class="separator:ae485ed7d3934b2dec7beadcfed0db5bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
@@ -176,6 +185,38 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><b>API_VERSION_
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a220880c505100e61ef3bee5ebc2b1475"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ironsource.IronSourceAtom.EnableDebug </td>
+          <td>(</td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>isDebug</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Enabling print debug information </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">isDebug</td><td>If set to <code>true</code> is debug. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a20fe75e10eaa2dd90cd7e38b4045c017"></a>
 <div class="memitem">
 <div class="memproto">
@@ -246,6 +287,88 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><b>API_VERSION_
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">callback</td><td>Action&lt;Response&gt; for receive response from server </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a23b591ae92db5398eb7f6ada41005b83"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ironsource.IronSourceAtom.initCoroutineHandler </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inits the coroutine handler. </p>
+
+</div>
+</div>
+<a id="a86bbda5e639756c03b35c40652aa25de"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ironsource.IronSourceAtom.initHeaders </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Inits the headers. </p>
+
+</div>
+</div>
+<a id="a47bb54d7e107cbcb78d07015bd46345a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ironsource.IronSourceAtom.printLog </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>logData</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prints the log. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">logData</td><td>Log data.</td></tr>
   </table>
   </dd>
 </dl>
@@ -373,7 +496,7 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><b>API_VERSION_
 
 </div>
 </div>
-<a id="a4b93259b96ff5bd0c223a426ec89bae8"></a>
+<a id="ac6a87cfec2ccecaed4a34885e72f794c"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -391,12 +514,6 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><b>API_VERSION_
           <td></td>
           <td class="paramtype">List&lt; string &gt;&#160;</td>
           <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">HttpMethod&#160;</td>
-          <td class="paramname"><em>method</em> = <code>HttpMethod.POST</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -430,7 +547,7 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><b>API_VERSION_
 
 </div>
 </div>
-<a id="a024d8f9658cd8abb26d809f26e720c30"></a>
+<a id="a2343847ddf80d7c368d6b3f4da28d708"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -448,12 +565,6 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><b>API_VERSION_
           <td></td>
           <td class="paramtype">List&lt; string &gt;&#160;</td>
           <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">HttpMethod&#160;</td>
-          <td class="paramname"><em>method</em> = <code>HttpMethod.POST</code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -494,7 +605,7 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><b>API_VERSION_
 
 </div>
 </div>
-<a id="a642f900f425ec91c6c03fe1833fa94a2"></a>
+<a id="afa135dae37ffb4857bdb1bf5d6ab4ffd"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -502,7 +613,7 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><b>API_VERSION_
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ironsource.IronSourceAtom.SendEventCoroutine </td>
+          <td class="memname">virtual void ironsource.IronSourceAtom.SendEventCoroutine </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>url</em>, </td>
@@ -539,7 +650,7 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><b>API_VERSION_
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -558,7 +669,7 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><b>API_VERSION_
 
 </div>
 </div>
-<a id="ad8c8f9e8c47dacbdcb460edd67594275"></a>
+<a id="a0c0ae36ff3541d22bc8cbcd4492b76a7"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -566,7 +677,7 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><b>API_VERSION_
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void ironsource.IronSourceAtom.SendEventCoroutine </td>
+          <td class="memname">virtual void ironsource.IronSourceAtom.SendEventCoroutine </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>url</em>, </td>
@@ -609,7 +720,7 @@ static string&#160;</td><td class="memItemRight" valign="bottom"><b>API_VERSION_
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
