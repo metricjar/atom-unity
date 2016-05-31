@@ -202,7 +202,7 @@ namespace ironsource {
         /// <param name="callback">
         /// <see cref="Action<Response>"/> for receive response from server
         /// </param>      
-        protected void Health(Action<Response> callback = null) {
+        public void Health(Action<Response> callback = null) {
             var eventObject = new Dictionary<string, string>();
             eventObject ["table"] = "helth_check";
             eventObject["data"] = null;
