@@ -6,15 +6,15 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace ironsource {
-    internal class Request {
-        private string url_;
-        private string data_;
-        private Dictionary<string, string> headers_;
+    public class Request {
+	protected string url_;
+	protected string data_;
+	protected Dictionary<string, string> headers_;
 
-        Action<Response> callbackAction_ = null;
+        protected Action<Response> callbackAction_ = null;
 
-        string callbackStr_ = null;
-        GameObject parrentGameObject_ = null;
+        protected string callbackStr_ = null;
+        protected GameObject parrentGameObject_ = null;
 
         /// <summary>
         /// Constructor for Reqeuest

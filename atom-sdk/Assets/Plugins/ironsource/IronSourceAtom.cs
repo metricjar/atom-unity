@@ -10,14 +10,14 @@ namespace ironsource {
     }
 
     public class IronSourceAtom {
-        private static string API_VERSION_ = "V1.0.0";
+        protected static string API_VERSION_ = "V1.0.0";
 
-        private string endpoint_ = "https://track.atom-data.io/";
-        private string authKey_ = "";
+        protected string endpoint_ = "https://track.atom-data.io/";
+        protected string authKey_ = "";
 
-        private Dictionary<string, string> headers_ = new Dictionary<string, string>();
-        private GameObject parentGameObject_ = null;
-        private MonoBehaviour coroutineHandler_ = null;
+        protected Dictionary<string, string> headers_ = new Dictionary<string, string>();
+        protected GameObject parentGameObject_ = null;
+        protected MonoBehaviour coroutineHandler_ = null;
 
         /// <summary>
         /// API constructor
@@ -25,14 +25,21 @@ namespace ironsource {
         /// <param name="gameObject">
         /// <see cref="GameObject"/> for coroutine method call.
         /// </param>
-        public IronSourceAtom(GameObject gameObject) {
+        public IronSourceAtom(GameObject gameObject = null) {
             parentGameObject_ = gameObject;
 
-            coroutineHandler_ = gameObject.GetComponent<MonoBehaviour>();
+            initCoroutineHandler();
+            initHeaders();
+        }
+
+        protected virtual void initCoroutineHandler() {
+            coroutineHandler_ = parentGameObject_.GetComponent<MonoBehaviour>();
             if (coroutineHandler_ == null) {
                 coroutineHandler_ = parentGameObject_.AddComponent<IronSourceCoroutineHandler>();
             }
+        }
 
+        protected virtual void initHeaders() {            
             headers_.Add("x-ironsource-atom-sdk-type", "unity");
             headers_.Add("x-ironsource-atom-sdk-version", IronSourceAtom.API_VERSION_);
         }
@@ -175,7 +182,7 @@ namespace ironsource {
         /// <param name="data">
         /// <see cref="string"/> for request data
         /// </param>
-        private string GetRequestData(string stream, string data) {
+        protected string GetRequestData(string stream, string data) {
             string hash = IronSourceAtomUtils.EncodeHmac(data, Encoding.ASCII.GetBytes(authKey_));
 
             var eventObject = new Dictionary<string, string>();
@@ -195,7 +202,7 @@ namespace ironsource {
         /// <param name="callback">
         /// <see cref="Action<Response>"/> for receive response from server
         /// </param>      
-        public void Health(Action<Response> callback = null) {
+        protected void Health(Action<Response> callback = null) {
             var eventObject = new Dictionary<string, string>();
             eventObject ["table"] = "helth_check";
             eventObject["data"] = null;
@@ -222,7 +229,7 @@ namespace ironsource {
         /// <param name="callback">
         /// <see cref="Action<Response>"/> for receive response from server
         /// </param> 
-        private void SendEventCoroutine(string url, HttpMethod method, Dictionary<string, string> headers,
+        protected void SendEventCoroutine(string url, HttpMethod method, Dictionary<string, string> headers,
                                         string data, Action<Response> callback) {
 
             Request request = new Request(url, data, headers, callback);
@@ -254,7 +261,7 @@ namespace ironsource {
         /// <param name="parrentGameObject">
         /// <see cref="GameObject"/> for calling callback
         /// </param>
-        private void SendEventCoroutine(string url, HttpMethod method, Dictionary<string, string> headers,
+        protected void SendEventCoroutine(string url, HttpMethod method, Dictionary<string, string> headers,
                                         string data, string callback, GameObject parrentGameObject) {
             if (parrentGameObject == null) {
                 parrentGameObject = parentGameObject_;

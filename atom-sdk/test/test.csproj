@@ -8,6 +8,8 @@
     <RootNamespace>test</RootNamespace>
     <AssemblyName>test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,6 +34,15 @@
     <Reference Include="nunit.framework">
       <HintPath>..\..\..\..\..\..\soft\NUnit-2.6.4\bin\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.mocks">
+      <HintPath>..\..\..\..\..\..\soft\NUnit-2.6.4\bin\framework\nunit.mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>..\bin\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\..\..\..\..\..\soft\NUnit-2.6.4\bin\lib\Rhino.Mocks.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp-firstpass">
       <HintPath>..\Temp\bin\Release\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
@@ -39,6 +50,7 @@
   <ItemGroup>
     <Compile Include="IronSourceAtomTest.cs" />
     <Compile Include="IronSourceAtomUtilsTest.cs" />
+    <Compile Include="ResponseTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
