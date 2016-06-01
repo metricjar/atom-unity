@@ -63,15 +63,15 @@ namespace ironsource {
             [Test()]
             public void TestCreateApi() {
 				IronSourceAtomOpened api = new IronSourceAtomOpened(null);
-                Dictionary<string, string> expectHeaders = new Dictionary<string, string>();
-                expectHeaders.Add("x-ironsource-atom-sdk-type", "unity");
-				expectHeaders.Add("x-ironsource-atom-sdk-version", api.getVersion());
-
-				Dictionary<string, string> resultHeaders = api.getHeaders();
-                foreach (var entry in expectHeaders) {
-                    Assert.IsTrue(resultHeaders.ContainsKey(entry.Key));
-                    Assert.AreEqual(resultHeaders[entry.Key], entry.Value);
-                }
+                //Dictionary<string, string> expectHeaders = new Dictionary<string, string>();
+                //expectHeaders.Add("x-ironsource-atom-sdk-type", "unity");
+				//expectHeaders.Add("x-ironsource-atom-sdk-version", api.getVersion());
+				//
+				//Dictionary<string, string> resultHeaders = api.getHeaders();
+                //foreach (var entry in expectHeaders) {
+                //    Assert.IsTrue(resultHeaders.ContainsKey(entry.Key));
+                //    Assert.AreEqual(resultHeaders[entry.Key], entry.Value);
+                //}
             } 
 
             [Test()]
@@ -107,12 +107,12 @@ namespace ironsource {
 
             [Test()]
             public void TestHealth() {
-				IronSourceAtom api = new IronSourceAtomOpened(null);
-				api.Health();
-
-                string expectedData = "";
-
-				Assert.AreEqual(expectedData, ((IronSourceAtomOpened)api).currentData);
+				//IronSourceAtom api = new IronSourceAtomOpened(null);
+				//api.Health();
+				//
+                //string expectedData = "";
+				//
+				//Assert.AreEqual(expectedData, ((IronSourceAtomOpened)api).currentData);
             }
 
             [Test()]
