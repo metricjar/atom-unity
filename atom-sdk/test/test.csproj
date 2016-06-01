@@ -40,9 +40,6 @@
     <Reference Include="UnityEngine">
       <HintPath>..\bin\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\Temp\bin\Release\Assembly-CSharp-firstpass.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IronSourceAtomTest.cs" />
