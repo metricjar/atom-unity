@@ -82,6 +82,7 @@ namespace ironsource {
 
             [Test()]
             public void TestSetAuth() {
+				api_ = new IronSourceAtomOpened(null);
                 string expectedAuth = "test_auth_key";
                 api_.SetAuth(expectedAuth);
 
