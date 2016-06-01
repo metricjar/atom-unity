@@ -107,15 +107,17 @@ namespace ironsource {
 
             [Test()]
             public void TestHealth() {
-                api_.Health();
+				IronSourceAtom api = new IronSourceAtomOpened(null);
+				api.Health();
 
                 string expectedData = "";
 
-                Assert.AreEqual(expectedData, api_.currentData);
+				Assert.AreEqual(expectedData, ((IronSourceAtomOpened)api).currentData);
             }
 
             [Test()]
             public void TestPutEvent() {
+				IronSourceAtom api = new IronSourceAtomOpened(null);
                 string expectedData = "{\"test\": \"data 1\"}";
                 string expectedStream = "test_stream";
 
@@ -124,12 +126,13 @@ namespace ironsource {
                 
 
                 // test post method
-                api_.PutEvent(expectedStream, expectedData, HttpMethod.POST, null);
-                Assert.AreEqual(expectedStr, api_.currentData);
+				api.PutEvent(expectedStream, expectedData, HttpMethod.POST, null);
+				Assert.AreEqual(expectedStr, ((IronSourceAtomOpened)api).currentData);
             }
 
             [Test()]
             public void TestPutEvents() {
+				IronSourceAtom api = new IronSourceAtomOpened(null);
                 List<string> events = new List<string>(); 
 		        events.Add("{\"event\": \"test post 1\"}");
 		        events.Add("{\"event\": \"test post 2\"}");
@@ -142,11 +145,11 @@ namespace ironsource {
                                IronSourceAtomUtils.EscapeStringValue(IronSourceAtomUtils.ListToJson(events)) +
                                "\",\"auth\": \"9630f4c8049d06f27a8c53be3eee8974bc35355b778f3cb5a8af20b7de2380ab\"}";
 
-                api_.PutEvents(expectedStream, events, "", null);
-                Assert.AreEqual(expectedStr, api_.currentData);
+				api.PutEvents(expectedStream, events, "", null);
+				Assert.AreEqual(expectedStr, ((IronSourceAtomOpened)api).currentData);
 
-                api_.PutEvents(expectedStream, events, null);
-                Assert.AreEqual(expectedStr, api_.currentData);
+				api.PutEvents(expectedStream, events, null);
+				Assert.AreEqual(expectedStr, ((IronSourceAtomOpened)api).currentData);
             }
         }
     }
