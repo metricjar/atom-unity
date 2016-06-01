@@ -60,20 +60,14 @@ namespace ironsource {
            
         [TestFixture()]
         public class IronSourceAtomTest {
-            IronSourceAtomOpened api_;
-
-            [TestFixtureSetUp()] 
-            public void Init() { 
-                api_ = new IronSourceAtomOpened(null);
-            }
-
             [Test()]
             public void TestCreateApi() {
+				IronSourceAtomOpened api = new IronSourceAtomOpened(null);
                 Dictionary<string, string> expectHeaders = new Dictionary<string, string>();
                 expectHeaders.Add("x-ironsource-atom-sdk-type", "unity");
-                expectHeaders.Add("x-ironsource-atom-sdk-version", api_.getVersion());
+				expectHeaders.Add("x-ironsource-atom-sdk-version", api.getVersion());
 
-                Dictionary<string, string> resultHeaders = api_.getHeaders();
+				Dictionary<string, string> resultHeaders = api.getHeaders();
                 foreach (var entry in expectHeaders) {
                     Assert.IsTrue(resultHeaders.ContainsKey(entry.Key));
                     Assert.AreEqual(resultHeaders[entry.Key], entry.Value);
@@ -82,31 +76,33 @@ namespace ironsource {
 
             [Test()]
             public void TestSetAuth() {
-				api_ = new IronSourceAtomOpened(null);
+				IronSourceAtom api = new IronSourceAtomOpened(null);
                 string expectedAuth = "test_auth_key";
-                api_.SetAuth(expectedAuth);
+				api.SetAuth(expectedAuth);
 
-                Assert.AreEqual(expectedAuth, api_.getAuth());
+				Assert.AreEqual(expectedAuth, ((IronSourceAtomOpened)api).getAuth());
             }
 
 
             [Test()]
             public void TestSetEndpoint() {
+				IronSourceAtomOpened api = new IronSourceAtomOpened(null);
                 string expectedEndpoint = "test_endpoint";
-                api_.SetEndpoint(expectedEndpoint);
+				api.SetEndpoint(expectedEndpoint);
 
-                Assert.AreEqual(expectedEndpoint, api_.getEndpoint());
+				Assert.AreEqual(expectedEndpoint, api.getEndpoint());
             }
 
             [Test()]
             public void TestGetRequestData() {
+				IronSourceAtomOpened api = new IronSourceAtomOpened(null);
                 string expectedData = "{\"test\": \"data 1\"}";
                 string expectedStream = "test_stream";
 
                 string expectedStr = "{\"table\": \"" + expectedStream + "\",\"data\": \"" +
                     IronSourceAtomUtils.EscapeStringValue(expectedData) + "\",\"auth\": \"a2f9cfd6b52071018a90502b6db66e45a78cb29c36ab40f13938243e011ab901\"}";
 
-                Assert.AreEqual(expectedStr, api_.GetRequestDataOpened(expectedStream, expectedData));
+				Assert.AreEqual(expectedStr, api.GetRequestDataOpened(expectedStream, expectedData));
             }
 
             [Test()]
