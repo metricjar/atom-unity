@@ -17,3 +17,4 @@ git push origin $TARGET_BRANCH
 
 cd ../../
 rm -r -f $TARGET_BRANCH
+rm -r -f doc

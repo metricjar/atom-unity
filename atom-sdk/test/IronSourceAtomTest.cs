@@ -30,6 +30,10 @@ namespace ironsource {
                 return this.endpoint_;
             }
 
+			public override void SetAuth(string authKey) {
+				base.SetAuth(authKey);
+			}
+
             protected override void initCoroutineHandler() {
             }
 
