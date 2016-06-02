@@ -38,6 +38,8 @@ script:
   - ls monocovCoverage
   - rm ./monocovCoverage/*Atom.xml
   - rm ./monocovCoverage/*Request.xml
+  - rm ./monocovCoverage/*Tracker.xml
+  - rm ./monocovCoverage/*BulkData.xml
   #- cat monocovCoverage/class-ironsource.IronSourceAtomUtils.xml
 after_success:
   - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
