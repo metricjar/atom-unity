@@ -12,8 +12,8 @@ install:
   - cp /tmp/cecil/lib/net40/Mono.Cecil.dll .
   - cp /tmp/cecil/lib/net40/Mono.Cecil.dll /tmp/cecil/
   # install monocov
-  - git clone --depth=50 git://github.com/csMACnz/monocov.git ../../csMACnz/monocov
-  - cd ../../csMACnz/monocov
+  - git clone https://github.com/mono/monocov.git ../../mono/monocov
+  - cd ../../mono/monocov
   - cp /tmp/cecil/Mono.Cecil.dll .
   - ./configure
   - make
@@ -30,8 +30,8 @@ script:
   - cp ./atom-sdk/Temp/bin/Release/Assembly-CSharp-firstpass.dll.mdb ./atom-sdk/test/bin/Release/
   - cp ./atom-sdk/Temp/bin/Release/Assembly-CSharp.dll.mdb ./atom-sdk/test/bin/Release/
   # create coverage file
-  - mono --debug --profile=monocov:outfile=monocovCoverage.cov,+Assembly-CSharp-firstpass ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe --process=Single ./atom-sdk/test/bin/Release/test.dll
-  - monocov --export-xml=monocovCoverage monocovCoverage.cov  
+  - mono --debug --profile=monocov:outfile=monocovCoverage.cov,+[Assembly-CSharp-firstpass] ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe --process=Single ./atom-sdk/test/bin/Release/test.dll
+  - monocov --minMethodeCoverage=0.05 --export-xml=monocovCoverage monocovCoverage.cov  
   - cat monocovCoverage.cov
   - ls monocovCoverage
   - cat monocovCoverage/class-ironsource.IronSourceAtom.xml
