@@ -4,16 +4,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 
 namespace ironsource {
 	public class BulkData {
 		protected List<string> bulkData_;
 
-       // #if CODE_COVERAGE 
-        [ExcludeFromCodeCoverage]
-       // #endif
         public BulkData() {
             bulkData_ = new List<string>();
         }
