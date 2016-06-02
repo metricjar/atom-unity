@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 
 using NUnit.Framework;
-using Rh
 using System;
 using System.Collections;
 using System.Collections.Generic;
