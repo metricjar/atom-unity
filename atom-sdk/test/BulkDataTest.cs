@@ -26,14 +26,28 @@ namespace ironsource {
 			public void TestGetData() {
 				BulkData data = new BulkData();
 
-				data.AddData ("1");
-				data.AddData ("2");
-				data.AddData ("3");
+				data.AddData("1");
+				data.AddData("2");
+				data.AddData("3");
 
 				string expectedStr = "[1,2,3]";
 
 				Assert.AreEqual(expectedStr, data.GetStringData());
 			}
+
+            [Test]
+            public void TestClearData() {
+                BulkData data = new BulkData();
+
+                data.AddData("1");
+                data.AddData("2");
+                data.AddData("3");
+
+                int expectedSize = 0;
+                data.ClearData();
+
+                Assert.AreEqual(expectedSize, data.GetSize());
+            }
 		}
 	}
 }
