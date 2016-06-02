@@ -30,7 +30,7 @@ script:
   - cp ./atom-sdk/Temp/bin/Release/Assembly-CSharp-firstpass.dll.mdb ./atom-sdk/test/bin/Release/
   - cp ./atom-sdk/Temp/bin/Release/Assembly-CSharp.dll.mdb ./atom-sdk/test/bin/Release/
   # create coverage file
-  - mono --debug --profile=monocov:outfile=monocovCoverage.cov,+[Assembly-CSharp-firstpass] ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe --process=Single ./atom-sdk/test/bin/Release/test.dll
+  - mono --debug --profile=cov:outfile=monocovCoverage.cov,+[Assembly-CSharp-firstpass] ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe --process=Single ./atom-sdk/test/bin/Release/test.dll
   - monocov --minMethodeCoverage=0.05 --export-xml=monocovCoverage monocovCoverage.cov  
   - cat monocovCoverage.cov
   - ls monocovCoverage
