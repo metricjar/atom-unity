@@ -41,6 +41,9 @@ namespace ironsource {
 
                 int expectedSize = 0;
 
+                data.AddData("1");
+                data.ClearData();
+
                 Assert.AreEqual(expectedSize, data.GetSize());
             }
 
