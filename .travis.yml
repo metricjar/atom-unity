@@ -1,6 +1,4 @@
-os:
-  - linux
-language: csharp
+language: c
 sudo: required
 install:
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner

@@ -62,10 +62,10 @@ namespace ironsource {
                 expectedList.Add("2");
                 expectedList.Add("3");
 
-                List<string> compareList = data.GetData();
+                //List<string> compareList = data.GetData();
 
                 for (int i = 0; i < expectedList.Count; ++i) {
-                    Assert.AreEqual(expectedList[i], compareList[i]);
+                    Assert.AreEqual(expectedList[i], data.GetData()[i]);
                 }
             }
 		}
