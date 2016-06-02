@@ -36,7 +36,7 @@ script:
   - monocov --export-xml=monocovCoverage monocovCoverage.cov  
   - cat monocovCoverage.cov
   - ls monocovCoverage
-  - cat monocovCoverage/class-ironsource.IronSourceAtomUtils.xml
+  #- cat monocovCoverage/class-ironsource.IronSourceAtomUtils.xml
 after_success:
   - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
   - REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
