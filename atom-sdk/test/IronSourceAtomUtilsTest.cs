@@ -47,7 +47,9 @@ namespace ironsource {
 
                 string testData = "{\"test\": \"data 1\"}";
 
-                Assert.AreEqual(expectedStr, ironsource.IronSourceAtomUtils.Base64Encode(testData));
+                string resultData = ironsource.IronSourceAtomUtils.Base64Encode(testData);
+
+                Assert.AreEqual(expectedStr, resultData);
             }
 
             [Test()]
