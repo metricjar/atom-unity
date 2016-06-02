@@ -26,11 +26,14 @@ namespace ironsource {
             public void GetSize_Test() {
                 BulkData data = new BulkData();
 
-                int expectedSize = 3;
+                int expectedSize = 0;
+                Assert.AreEqual(expectedSize, data.GetSize());
 
                 data.AddData("1");
                 data.AddData("2");
                 data.AddData("3");
+
+                expectedSize = 3;
 
                 Assert.AreEqual(expectedSize, data.GetSize());
             }
