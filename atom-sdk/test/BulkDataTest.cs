@@ -23,7 +23,7 @@ namespace ironsource {
 			}
 
 			[Test]
-			public void TestGetData() {
+			public void TestGetStringData() {
 				BulkData data = new BulkData();
 
 				data.AddData("1");
