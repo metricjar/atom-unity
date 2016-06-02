@@ -8,9 +8,9 @@ using System.Collections.Generic;
 namespace ironsource {
 	namespace test {  
 		[TestFixture]
-		public class BulkDataTest {
+		public class BulkData_Tests {
 			[Test]
-			public void TestDataSize() {
+			public void GetSize_Test() {
 				BulkData data = new BulkData();
 
 				int expectedSize = 3;
@@ -23,7 +23,7 @@ namespace ironsource {
 			}
 
 			[Test]
-			public void TestGetStringData() {
+			public void GetStringData_Test() {
 				BulkData data = new BulkData();
 
 				data.AddData("1");
@@ -36,7 +36,7 @@ namespace ironsource {
 			}
 
             [Test]
-            public void TestClearData() {
+            public void ClearData_Test() {
                 BulkData data = new BulkData();
 
                 data.AddData("1");
@@ -50,7 +50,7 @@ namespace ironsource {
             }
 
             [Test]
-            public void TestGetData() {
+            public void GetData_Test() {
                 BulkData data = new BulkData();
 
                 data.AddData("1");
