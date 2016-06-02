@@ -39,12 +39,7 @@ namespace ironsource {
             public void ClearData_Test() {
                 BulkData data = new BulkData();
 
-                data.AddData("1");
-                data.AddData("2");
-                data.AddData("3");
-
                 int expectedSize = 0;
-                data.ClearData();
 
                 Assert.AreEqual(expectedSize, data.GetSize());
             }
