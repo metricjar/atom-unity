@@ -31,11 +31,13 @@ script:
   - cp ./atom-sdk/Temp/bin/Release/Assembly-CSharp-firstpass.dll ./atom-sdk/test/bin/Release/
   - cp ./atom-sdk/Temp/bin/Release/Assembly-CSharp.dll.mdb ./atom-sdk/test/bin/Release/
   # create coverage file
-  - mono --debug --profile=monocov:outfile=monocovCoverage.cov,+IronSourceAtomUtils,-IronSourceAtom,-Test ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe --process=Single ./atom-sdk/test/bin/Release/test.dll
+  - mono --debug --profile=monocov:outfile=monocovCoverage.cov,+Assembly-CSharp-firstpass ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe --process=Single ./atom-sdk/test/bin/Release/test.dll
   - ls .
   - monocov --export-xml=monocovCoverage monocovCoverage.cov  
   - cat monocovCoverage.cov
   - ls monocovCoverage
+  - rm ./monocovCoverage/*Atom.xml
+  - rm ./monocovCoverage/*Request.xml
   #- cat monocovCoverage/class-ironsource.IronSourceAtomUtils.xml
 after_success:
   - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
