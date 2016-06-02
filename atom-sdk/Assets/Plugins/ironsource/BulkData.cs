@@ -11,9 +11,9 @@ namespace ironsource {
 	public class BulkData {
 		protected List<string> bulkData_;
 
-        #if CODE_COVERAGE 
+       // #if CODE_COVERAGE 
         [ExcludeFromCodeCoverage]
-        #endif
+       // #endif
         public BulkData() {
             bulkData_ = new List<string>();
         }
