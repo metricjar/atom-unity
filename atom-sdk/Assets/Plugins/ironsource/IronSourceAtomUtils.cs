@@ -55,7 +55,7 @@ namespace ironsource {
         /// <see cref="string"/> data to encode
         /// </param>      
         public static string Base64Encode(string data) {
-            var dataBytes = System.Text.Encoding.UTF8.GetBytes(data);
+            byte[] dataBytes = System.Text.Encoding.UTF8.GetBytes(data);
             return System.Convert.ToBase64String(dataBytes);
         }
 
