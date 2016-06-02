@@ -10,7 +10,7 @@ namespace ironsource {
 		[TestFixture]
 		public class BulkData_Tests {
 			[Test]
-			public void GetSize_Test() {
+			public void AddData_Test() {
 				BulkData data = new BulkData();
 
 				int expectedSize = 3;
@@ -21,6 +21,19 @@ namespace ironsource {
 
 				Assert.AreEqual(expectedSize, data.GetSize());
 			}
+
+            [Test]
+            public void GetSize_Test() {
+                BulkData data = new BulkData();
+
+                int expectedSize = 3;
+
+                data.AddData("1");
+                data.AddData("2");
+                data.AddData("3");
+
+                Assert.AreEqual(expectedSize, data.GetSize());
+            }
 
 			[Test]
 			public void GetStringData_Test() {
