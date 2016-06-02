@@ -9,6 +9,10 @@ namespace ironsource {
 	public class BulkData {
 		protected List<string> bulkData_;
 
+        public BulkData() {
+            bulkData_ = new List<string>();
+        }
+
         /// <summary>
         /// Adds the data.
         /// </summary>
