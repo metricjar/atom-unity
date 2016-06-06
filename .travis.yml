@@ -36,6 +36,7 @@ script:
   - monocov --export-xml=monocovCoverage monocovCoverage.cov  
   - cat monocovCoverage.cov
   - ls monocovCoverage
+  # remove code than not in unittests
   - rm ./monocovCoverage/*Atom.xml
   - rm ./monocovCoverage/*Request.xml
   - rm ./monocovCoverage/*Tracker.xml

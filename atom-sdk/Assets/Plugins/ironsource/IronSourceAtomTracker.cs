@@ -137,7 +137,7 @@ namespace ironsource {
 
 			Action<ironsource.Response> callback = null;
 			callback = delegate(ironsource.Response response) {
-                Debug.Log("from callback: status = " + response.status);   
+                printLog("from callback: status = " + response.status);   
 
                 if (response.status != 200) {
                     SendData(stream, bulkStrData, bulkSize, HttpMethod.POST, callback);
