@@ -99,8 +99,8 @@ MIT
 [license-url]: LICENSE
 [docs-image]: https://img.shields.io/badge/docs-latest-blue.svg
 [docs-url]: https://ironsource.github.io/atom-unity/
-[travis-image]: https://travis-ci.org/ironSource/atom-unity.svg?branch=feature%2FISA-226
+[travis-image]: https://travis-ci.org/ironSource/atom-unity.svg?branch=master
 [travis-url]: https://travis-ci.org/ironSource/atom-unity
-[coverage-image]: https://coveralls.io/repos/github/ironSource/atom-unity/badge.svg?branch=feature%2FISA-226
-[coverage-url]: https://coveralls.io/github/ironSource/atom-unity?branch=feature%2FISA-226
+[coverage-image]: https://coveralls.io/repos/github/ironSource/atom-unity/badge.svg?branch=master
+[coverage-url]: https://coveralls.io/github/ironSource/atom-unity?branch=master
 [example]: https://cloud.githubusercontent.com/assets/1713228/15683093/590c2386-2769-11e6-8429-14f41e937f27.png "example"
