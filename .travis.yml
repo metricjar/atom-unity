@@ -32,6 +32,9 @@ script:
   # create coverage file
   - mono --profile=monocov:outfile=monocovCoverage.cov,+Assembly-CSharp-firstpass ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./atom-sdk/test/bin/Release/test.dll
   - monocov --export-xml=monocovCoverage monocovCoverage.cov  
+  # remove code than not in unittests
+  - rm ./monocovCoverage/*Atom.xml
+  - rm ./monocovCoverage/*Request.xml
 after_success:
   - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
   - REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
