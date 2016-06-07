@@ -34,7 +34,7 @@ script:
   - monocov --export-xml=monocovCoverage monocovCoverage.cov  
   # remove code than not in unittests
   - rm ./monocovCoverage/*Atom.xml
-  - rm ./monocovCoverage/*Request.xml
+  - rm ./monocovCoverage/*Request.xml 
 after_success:
   - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
   - REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")
