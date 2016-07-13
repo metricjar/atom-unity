@@ -116,7 +116,7 @@ namespace ironsource {
         /// Stream name for saving data in db table
         /// </param>
         /// <param name="data">
-        /// Stream name for saving data in db table
+        /// user data to send
         /// </param>
         /// <param name="method">
         /// <see cref="HttpMethod"/> for POST or GET method for do request
@@ -253,7 +253,7 @@ namespace ironsource {
         }
 
         /// <summary>
-        /// Check health of server
+        /// Send data to server
         /// </summary>
         /// <param name="url">
         /// <see cref="string"/> for server address

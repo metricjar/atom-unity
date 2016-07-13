@@ -19,7 +19,7 @@ namespace ironsource {
         protected bool isDebug_;
 
         /// <summary>
-        /// Constructor for Reqeuest
+        /// Constructor for Request
         /// </summary>
         /// <param name="url">
         /// <see cref="string"/> for server address.
