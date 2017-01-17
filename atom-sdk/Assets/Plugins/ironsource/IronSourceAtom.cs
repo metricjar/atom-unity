@@ -52,6 +52,16 @@ namespace ironsource {
         }
 
         /// <summary>
+        /// Check is Debug mode enabled
+        /// </summary>
+        /// <returns>
+        /// Is Debug Mode
+        /// </returns>
+        public bool IsDebug() {
+            return isDebug_;
+        }
+
+        /// <summary>
         /// Inits the coroutine handler.
         /// </summary>
         protected virtual void initCoroutineHandler() {

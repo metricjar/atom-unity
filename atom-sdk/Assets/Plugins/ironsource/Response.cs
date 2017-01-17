@@ -23,5 +23,10 @@ namespace ironsource {
             this.data = data;
             this.status = status;
         }
+
+        public String ToString() {
+            return "{ \"error\": " + error + ", \"data\": " + data +
+                ", \"status\": " + status + " }";
+        }
     }
 }

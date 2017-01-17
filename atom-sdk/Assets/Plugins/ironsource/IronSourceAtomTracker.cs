@@ -7,14 +7,18 @@ using System.Text;
 
 namespace ironsource {
     public class IronSourceAtomTracker {
-        protected float flushIntervals_;
-        protected float bulkSize_;
-        protected float bulkBytesSize_;
+        protected float deltaTime_ = 0;
+
+        protected float flushInterval_ = 10;
+        protected float bulkSize_ = 64;
+        protected float bulkBytesSize_ = 64 * 1024;
+
+        protected float retryTimeout_ = 1;
 
         protected IronSourceAtom api_;
-        protected bool isDebug_;
+        protected bool isDebug_ = false;
 
-		protected Dictionary<string, BulkData> bulkDataMap_;
+        protected Dictionary<string, BulkData> bulkDataMap_ = new Dictionary<string, BulkData>();
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ironsource.IronSourceAtomTracker"/> class.
@@ -24,10 +28,6 @@ namespace ironsource {
 		/// </param>
         public IronSourceAtomTracker(GameObject gameObject) {
             api_ = new IronSourceAtom(gameObject);
-
-			bulkDataMap_ = new Dictionary<string, BulkData>();
-
-            isDebug_ = false;
         }
 
 		/// <summary>
@@ -40,13 +40,23 @@ namespace ironsource {
             isDebug_ = isDebug;
         }
 
+        /// <summary>
+        /// Check is Debug mode enabled
+        /// </summary>
+        /// <returns>
+        /// Is Debug Mode
+        /// </returns>
+        public bool IsDebug() {
+            return isDebug_;
+        }
+
 		/// <summary>
 		/// Prints data to unity log.
 		/// </summary>
 		/// <param name="data">
 		/// Data for logger.
 		/// </param>
-        protected void printLog(string data) {
+        protected void PrintLog(string data) {
             if (isDebug_) {
                 Debug.Log(data);
             }
@@ -72,6 +82,16 @@ namespace ironsource {
 			api_.SetEndpoint(endpoint);
 		}
 
+        /// <summary>
+        /// Sets flush interval.
+        /// </summary>
+        /// <param name="flushInterval">
+        /// Timer interval for flushing data.
+        /// </param>
+        public void SetFlusInterval(double flushInterval) {
+            flushInterval = flushInterval;
+        }
+
 		/// <summary>
 		/// Track the specified stream and data.
 		/// </summary>
@@ -81,7 +101,7 @@ namespace ironsource {
 		/// <param name="data">
 		/// Data.
 		/// </param>
-        public void track(string stream, string data) {
+        public void Track(string stream, string data) {
 			if (!bulkDataMap_.ContainsKey(stream)) {
 				bulkDataMap_[stream] = new BulkData();
 			}
@@ -89,7 +109,7 @@ namespace ironsource {
 			BulkData bulkData = bulkDataMap_[stream];
             bulkData.AddData(data);
             if (bulkData.GetSize() >= bulkSize_) {
-                flush(stream);        
+                Flush(stream);        
             }
         }
 
@@ -130,18 +150,26 @@ namespace ironsource {
         /// <param name="bulkData">
         /// Bulk data.
         /// </param>
-        protected void flushData(string stream, BulkData bulkData) {
+        protected IEnumerator FlushData(string stream, BulkData bulkData) {
             string bulkStrData = bulkData.GetStringData();
             int bulkSize = bulkData.GetSize();
             bulkData.ClearData();
 
+            float timeout = retryTimeout_;
+
 			Action<ironsource.Response> callback = null;
 			callback = delegate(ironsource.Response response) {
-                printLog("from callback: status = " + response.status);   
+                PrintLog("from callback: status = " + response.status);   
 
-                if (response.status != 200) {
-                    SendData(stream, bulkStrData, bulkSize, HttpMethod.POST, callback);
-                }             
+                if (response.status <= -1 || response.status >= 500) {
+                    if (timeout < 20 * 60) {
+                        yield return new WaitForSeconds(timeout);
+                        timeout = timeout * 2;
+                        SendData(stream, bulkStrData, bulkSize, HttpMethod.POST, callback);
+                    } else {
+                        //PrintLog("");
+                    }
+                }    
             };
 
             SendData(stream, bulkStrData, bulkSize, HttpMethod.POST, callback);
@@ -153,23 +181,34 @@ namespace ironsource {
         /// <param name="stream">
         /// Stream.
         /// </param>
-        public void flush(string stream) {
+        public void Flush(string stream) {
 			if (stream.Length > 0) {
                 if (bulkDataMap_.ContainsKey(stream)) {
                     BulkData bulkData = bulkDataMap_[stream];
-                    flushData(stream, bulkData);
+                    FlushData(stream, bulkData);
                 }
             } else {
-                printLog("Wrong stream name!");
+                PrintLog("Wrong stream name!");
             }                  
 		}
 
         /// <summary>
         /// Flush this instance.
         /// </summary>
-        public void flush() {
+        public void Flush() {
             foreach (var bulkDataEntry in bulkDataMap_) {
-				flushData(bulkDataEntry.Key, bulkDataEntry.Value);
+				FlushData(bulkDataEntry.Key, bulkDataEntry.Value);
+            }
+        }
+
+        /// <summary>
+        /// Update timer for Flush Data
+        /// </summary>
+        public void Update() {
+            deltaTime_ += Time.deltaTime;
+            if (deltaTime_ >= flushInterval_) {
+                deltaTime_ = 0;
+                Flush();
             }
         }
     }

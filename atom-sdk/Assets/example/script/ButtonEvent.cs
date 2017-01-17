@@ -6,11 +6,19 @@ using System.Collections.Generic;
 
 public class ButtonEvent : MonoBehaviour {
     private ironsource.IronSourceAtom api_ = null;
+    private ironsource.IronSourceAtomTracker tracker_ = null;
 
     void Start() {
         api_ = new ironsource.IronSourceAtom(gameObject);   
-        api_.EnableDebug(false);
+        api_.EnableDebug(true);
         api_.SetAuth("");
+
+        tracker_ = new ironsource.IronSourceAtomTracker(gameObject); 
+        tracker_.EnableDebug(true);
+    }
+
+    void Update() {
+        tracker_.Update();
     }
 
     public void OnPostClick(){
@@ -34,8 +42,7 @@ public class ButtonEvent : MonoBehaviour {
         string errorStr = (response.error == null) ? "null" : "\"" + response.error + "\"";
         string dataStr = (response.data == null) ? "null" : "\"" + response.data + "\"";
 
-        text.text = "{ \"err\": " + errorStr + ", \"data\": " + dataStr +
-                        ", \"status\": " + response.status + "}";
+        text.text = response.ToString();
     }
 
     public void OnPostBulkClick() {
@@ -54,8 +61,7 @@ public class ButtonEvent : MonoBehaviour {
             string errorStr = (response.error == null) ? "null" : "\"" + response.error + "\"";
             string dataStr = (response.data == null) ? "null" : "\"" + response.data + "\"";
 
-            text.text = "{ \"err\": " + errorStr + ", \"data\": " + dataStr +
-                        ", \"status\": " + response.status + "}";
+            text.text = response.ToString();
         };
 
         List<string> events = new List<string>(); 
@@ -64,5 +70,8 @@ public class ButtonEvent : MonoBehaviour {
         events.Add("{\"event\": \"test get 3\"}");
 
         api_.PutEvents("ibtest", events, callback);
+    }
+
+    public void OnTrackClick() {
     }
 }
