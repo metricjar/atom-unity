@@ -9,12 +9,18 @@ atom-unity is the official [ironSource.atom](http://www.ironsrc.com/data-flow-ma
 
 - [Signup](https://atom.ironsrc.com/#/signup)
 - [Documentation](https://ironsource.github.io/atom-unity/)
-- [Installation](#Installation)
+- [Installation](#installation)
+- [Usage](#usage)
 - [Sending an event](#Using-the-IronSource-API-to-send-events)
 
-#### Installation
+## Installation
 
-#### Using the IronSource API to send events
+## Usage
+### Low Level (Basic) SDK
+The Low Level SDK has 2 methods:  
+- PutEvent - Sends a single event to Atom  
+- PutEvents - Sends a bulk (batch) of events to Atom
+
 Example of sending an event in C#:
 ```c#
 public class ButtonEvent : MonoBehaviour {
@@ -88,12 +94,13 @@ function OnPostBulkClick() {
 ```
 
 
-### Example
+## Example
+You can use our [example][example-url] for sending data to Atom:
 
 ![alt text][example]
 
-### License
-MIT
+## License
+[MIT](LICENSE)
 
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license-url]: LICENSE
