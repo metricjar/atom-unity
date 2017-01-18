@@ -13,6 +13,14 @@ namespace ironsource {
             bulkData_ = new List<string>();
         }
 
+        public BulkData(BulkData bulkData):
+            this() {
+            List<String> bulkDataList = bulkData.GetData();
+            foreach(var data in bulkDataList) {
+                AddData(data);
+            }
+        }
+
         /// <summary>
         /// Adds the data.
         /// </summary>
@@ -22,6 +30,20 @@ namespace ironsource {
 		public void AddData(string data) {
 			bulkData_.Add(data);
 		}
+
+
+        /// <summary>
+        /// Adds the bulk data.
+        /// </summary>
+        /// <param name="data">
+        /// Data.
+        /// </param>
+        public void AddBulkData(BulkData bulkData) {
+            List<String> bulkDataList = bulkData.GetData();
+            foreach(var data in bulkDataList) {
+                AddData(data);
+            }
+        }
 
         /// <summary>
         /// Gets the size.

@@ -39,8 +39,6 @@ public class ButtonEvent : MonoBehaviour {
     public static void ApiCallback(ironsource.Response response) {
         Debug.Log("from static callback: status = " + response.status); 
         Text text = GameObject.Find("response_data").GetComponent<Text>();
-        string errorStr = (response.error == null) ? "null" : "\"" + response.error + "\"";
-        string dataStr = (response.data == null) ? "null" : "\"" + response.data + "\"";
 
         text.text = response.ToString();
     }
@@ -58,8 +56,6 @@ public class ButtonEvent : MonoBehaviour {
         Action<ironsource.Response> callback = delegate(ironsource.Response response) {
             Debug.Log("from callback: status = " + response.status); 
             Text text = GameObject.Find("response_data").GetComponent<Text>();
-            string errorStr = (response.error == null) ? "null" : "\"" + response.error + "\"";
-            string dataStr = (response.data == null) ? "null" : "\"" + response.data + "\"";
 
             text.text = response.ToString();
         };
@@ -73,5 +69,15 @@ public class ButtonEvent : MonoBehaviour {
     }
 
     public void OnTrackClick() {
+        Action<string, string, Dictionary<string, ironsource.BulkData>> errorCallback = 
+            delegate(string errorStr, string stream, Dictionary<string, ironsource.BulkData> data) {
+
+            };
+            
+        tracker_.Track("ibtest", "{\"event\": \"test get 3\"}", errorCallback); 
+    }
+
+    public void OnFlushClick() {
+        tracker_.Flush();
     }
 }

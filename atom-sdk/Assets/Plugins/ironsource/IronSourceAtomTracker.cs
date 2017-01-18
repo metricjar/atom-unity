@@ -14,11 +14,15 @@ namespace ironsource {
         protected float bulkBytesSize_ = 64 * 1024;
 
         protected float retryTimeout_ = 1;
+        protected int backlogSize_ = 500;
 
         protected IronSourceAtom api_;
         protected bool isDebug_ = false;
 
         protected Dictionary<string, BulkData> bulkDataMap_ = new Dictionary<string, BulkData>();
+
+        protected Dictionary<string, bool> isStreamFlush_ = new Dictionary<string, bool>();
+        protected Dictionary<string, bool> queueFlush_ = new Dictionary<string, bool>();
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ironsource.IronSourceAtomTracker"/> class.
@@ -88,8 +92,8 @@ namespace ironsource {
         /// <param name="flushInterval">
         /// Timer interval for flushing data.
         /// </param>
-        public void SetFlusInterval(double flushInterval) {
-            flushInterval = flushInterval;
+        public void SetFlusInterval(float flushInterval) {
+            flushInterval_ = flushInterval;
         }
 
 		/// <summary>
@@ -101,10 +105,20 @@ namespace ironsource {
 		/// <param name="data">
 		/// Data.
 		/// </param>
-        public void Track(string stream, string data) {
+        public void Track(string stream, string data, 
+            Action<string, string, Dictionary<string, ironsource.BulkData>> errorCallback = null) {
 			if (!bulkDataMap_.ContainsKey(stream)) {
 				bulkDataMap_[stream] = new BulkData();
 			}
+
+            if (bulkDataMap_[stream].GetSize() >= backlogSize_) {
+                string errorStr = "Message store for stream: '" + stream + "' has reached its maximum size!";
+                PrintLog (errorStr);
+                if (errorCallback != null) {
+                    errorCallback (errorStr , stream, bulkDataMap_);
+                }
+                return;
+            }
 
 			BulkData bulkData = bulkDataMap_[stream];
             bulkData.AddData(data);
@@ -131,9 +145,14 @@ namespace ironsource {
         /// <param name="callback">
         /// Callback.
         /// </param>
-        protected void SendData(string stream, string data, int dataSize = 1, 
-                                HttpMethod method = HttpMethod.POST, 
-                                Action<ironsource.Response> callback = null) {
+        protected IEnumerator SendData(string stream, string data, int dataSize = 1, 
+                                       HttpMethod method = HttpMethod.POST, 
+                                       Action<ironsource.Response> callback = null,
+                                       bool isRetry = false, float timeout = 0) {
+            if (isRetry) {
+                yield return new WaitForSeconds(timeout);
+            }
+
             if (dataSize == 1) {
                 api_.PutEvent(stream, data, method, callback);
             } else if (dataSize > 1){
@@ -150,8 +169,21 @@ namespace ironsource {
         /// <param name="bulkData">
         /// Bulk data.
         /// </param>
-        protected IEnumerator FlushData(string stream, BulkData bulkData) {
+        protected void FlushData(string stream, BulkData bulkData) {
+            if (bulkData.GetSize() == 0) {
+                return;
+            }
+
+            if (isStreamFlush_.ContainsKey(stream) && isStreamFlush_[stream]) {
+                queueFlush_[stream] = true;
+                return;
+            }
+
+            isStreamFlush_[stream] = true;
+
             string bulkStrData = bulkData.GetStringData();
+            BulkData bulkDataTemp = new BulkData(bulkData);
+
             int bulkSize = bulkData.GetSize();
             bulkData.ClearData();
 
@@ -163,16 +195,27 @@ namespace ironsource {
 
                 if (response.status <= -1 || response.status >= 500) {
                     if (timeout < 20 * 60) {
-                        yield return new WaitForSeconds(timeout);
+                        api_.getCoruotinehandler().StartCoroutine(
+                            SendData(stream, bulkStrData, bulkSize, HttpMethod.POST, callback, true, timeout));
                         timeout = timeout * 2;
-                        SendData(stream, bulkStrData, bulkSize, HttpMethod.POST, callback);
+                        return;
                     } else {
-                        //PrintLog("");
+                        BulkData currentBulkData = bulkDataMap_[stream];
+                        currentBulkData.AddBulkData(bulkDataTemp);
+
+                        callback(new Response("Timeout - No reponse from server", null, 408));
+                        return;
                     }
-                }    
+                }
+
+                isStreamFlush_[stream] = false;
+                if (queueFlush_.ContainsKey(stream) && queueFlush_[stream]) {
+                    queueFlush_[stream] = false;
+                    Flush();
+                }
             };
 
-            SendData(stream, bulkStrData, bulkSize, HttpMethod.POST, callback);
+            api_.getCoruotinehandler().StartCoroutine(SendData(stream, bulkStrData, bulkSize, HttpMethod.POST, callback));
         }
 
 		/// <summary>
@@ -197,7 +240,7 @@ namespace ironsource {
         /// </summary>
         public void Flush() {
             foreach (var bulkDataEntry in bulkDataMap_) {
-				FlushData(bulkDataEntry.Key, bulkDataEntry.Value);
+                FlushData(bulkDataEntry.Key, bulkDataEntry.Value);
             }
         }
 

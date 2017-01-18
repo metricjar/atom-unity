@@ -19,7 +19,7 @@ namespace ironsource {
     public class IronSourceAtom {
         protected static string API_VERSION_ = "V1.0.0";
 
-        protected string endpoint_ = "https://track.atom-data.io/";
+        protected string endpoint_ = "https://track.atom-data.io1/";
         protected string authKey_ = "";
 
         protected Dictionary<string, string> headers_ = new Dictionary<string, string>();
@@ -69,6 +69,16 @@ namespace ironsource {
             if (coroutineHandler_ == null) {
                 coroutineHandler_ = parentGameObject_.AddComponent<IronSourceCoroutineHandler>();
             }
+        }
+
+        /// <summary>
+        /// Get coroutine handler.
+        /// </summary>
+        /// <returns>
+        /// Coroutine handler as MonoBehaviour.
+        /// </returns>
+        public MonoBehaviour getCoruotinehandler() {
+            return coroutineHandler_;
         }
 
         /// <summary>

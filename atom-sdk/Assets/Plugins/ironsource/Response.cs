@@ -24,8 +24,12 @@ namespace ironsource {
             this.status = status;
         }
 
-        public String ToString() {
-            return "{ \"error\": " + error + ", \"data\": " + data +
+
+        public override string ToString() {
+            string errorStr = (error == null) ? "null" : "\"" + error + "\"";
+            string dataStr = (data == null) ? "null" : "\"" + data + "\"";
+
+            return "{ \"error\": " + errorStr + ", \"data\": " + dataStr +
                 ", \"status\": " + status + " }";
         }
     }
