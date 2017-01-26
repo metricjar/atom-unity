@@ -16,8 +16,90 @@ atom-unity is the official [ironSource.atom](http://www.ironsrc.com/data-flow-ma
 ## Installation
 
 ## Usage
+
+You may use the SDK in two different ways:
+
+1. High level "Tracker" - contains in-memory storage and tracks events based on certain parameters.
+2. Low level - contains 2 methods: PutEvent() and PutEvents() to send 1 event or a batch respectively.
+
+### High Level SDK - "Tracker"
+
+The Tracker process:
+
+You can use Track() method in order to track the events to an Atom Stream.
+The tracker accumulates events and flushes them when it meets one of the following conditions:
+
+- Every 10 seconds (default)
+- Number of accumulated events has reached 64 (default)
+- Size of accumulated events has reached 64KB (default)
+
+In case of failure the tracker will preform an exponential backoff.
+The tracker stores events in memory.
+
+Example of using tracker in C#:
+```c#
+public class ButtonEvent : MonoBehaviour {
+    private ironsource.IronSourceAtomTracker tracker_ = null;
+
+    void Start() {
+        tracker_ = new ironsource.IronSourceAtomTracker(gameObject); 
+        // enable print logs
+        tracker_.EnableDebug(true);
+        tracker_.SetAuth("<YOUR_AUTH_KEY>");
+    }
+
+    void Update() {
+        tracker_.Update();
+    }
+
+    public void OnTrackClick() {
+        Action<string, string, Dictionary<string, ironsource.BulkData>> errorCallback = 
+            delegate(string errorStr, string stream, Dictionary<string, ironsource.BulkData> data) {
+
+        };
+            
+        tracker_.Track("<YOUR_STREAM_NAME>", "{\"event\": \"test get 3\"}", errorCallback); 
+    }
+
+    public void OnFlushClick() {
+        tracker_.Flush();
+    }
+}
+```
+
+Example of using tracker in JavaScript:
+```js
+private var tracker_ : ironsource.IronSourceAtomTracker;
+
+function Start() {
+    tracker_ = new ironsource.IronSourceAtomTracker(gameObject);  
+    tracker_.EnableDebug(true);     
+    tracker_.SetAuth("<YOUR_AUTH_KEY>");
+}
+
+function Update() {
+    tracker_.Update();
+}
+
+function ApiErrorCallback(errorStr: String, stream: String, 
+                              data: Dictionary.<String, ironsource.BulkData>) {
+
+}
+
+function OnTrackClick(){
+    tracker_.Track("<YOUR_STREAM_NAME>", "{\"event\": \"test get 3\"}", ApiErrorCallback));
+}
+
+function OnFlushClick() {
+    tracker_.Flush();
+}
+
+```
+
 ### Low Level (Basic) SDK
+
 The Low Level SDK has 2 methods:  
+
 - PutEvent - Sends a single event to Atom  
 - PutEvents - Sends a bulk (batch) of events to Atom
 

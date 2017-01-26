@@ -15,6 +15,7 @@ public class ButtonEvent : MonoBehaviour {
 
         tracker_ = new ironsource.IronSourceAtomTracker(gameObject); 
         tracker_.EnableDebug(true);
+        tracker_.SetAuth("");
     }
 
     void Update() {
