@@ -192,4 +192,4 @@ You can use our [example][example-url] for sending data to Atom:
 [travis-url]: https://travis-ci.org/ironSource/atom-unity
 [coverage-image]: https://coveralls.io/repos/github/ironSource/atom-unity/badge.svg?branch=master
 [coverage-url]: https://coveralls.io/github/ironSource/atom-unity?branch=master
-[example]: https://cloud.githubusercontent.com/assets/1713228/15683093/590c2386-2769-11e6-8429-14f41e937f27.png "example"
+[example]: https://cloud.githubusercontent.com/assets/1713228/22325892/126f2358-e3b9-11e6-9852-4339748a9ff8.png "example"
