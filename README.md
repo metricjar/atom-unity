@@ -34,7 +34,7 @@ The tracker accumulates events and flushes them when it meets one of the followi
 - Size of accumulated events has reached 64KB (default)
 
 In case of failure the tracker will preform an exponential backoff.
-In case when maximum of backlog size will be reached - then will be called error callback fro Track method.
+In case when maximum of backlog size will be reached - then will be called error callback from Track method.
 The tracker stores events in memory.
 
 Example of using tracker in C#:
