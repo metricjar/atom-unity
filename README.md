@@ -11,11 +11,12 @@ atom-unity is the official [ironSource.atom](http://www.ironsrc.com/data-flow-ma
 - [Documentation](https://ironsource.github.io/atom-unity/)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Sending an event](#Using-the-IronSource-API-to-send-events)
+- [Change Log](#change-log)
+- [Example](#example)
 
 ## Installation
 
-Add dependency for Atom SDK from [dist folder](dist/).
+Import package for Atom SDK from [dist directory](dist/).
 
 ## Usage
 
@@ -178,9 +179,17 @@ function OnPostBulkClick() {
 }
 ```
 
+## Change Log
+
+### v1.1.0
+- Added Tracker
+
+### v1.0.0
+- Basic features - putEvent & putEvents
+
 
 ## Example
-You can use our [example][example-url] for sending data to Atom:
+You can use our [example](atom-sdk/Assets/example) for sending data to Atom:
 
 ![alt text][example]
 
