@@ -15,6 +15,8 @@ atom-unity is the official [ironSource.atom](http://www.ironsrc.com/data-flow-ma
 
 ## Installation
 
+Add dependency for Atom SDK from [dist folder](dist/).
+
 ## Usage
 
 You may use the SDK in two different ways:

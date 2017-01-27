@@ -17,7 +17,7 @@ namespace ironsource {
     }
 
     public class IronSourceAtom {
-        protected static string API_VERSION_ = "V1.0.0";
+        protected static string API_VERSION_ = "V1.1.0";
 
         protected string endpoint_ = "https://track.atom-data.io/";
         protected string authKey_ = "";
