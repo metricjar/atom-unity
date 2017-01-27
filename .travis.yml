@@ -1,6 +1,8 @@
 os:
   - linux
 language: csharp
+mono:
+  - 4.2.3
 sudo: required
 install:
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
@@ -31,10 +33,12 @@ script:
   - cp ./atom-sdk/Temp/bin/Release/Assembly-CSharp.dll.mdb ./atom-sdk/test/bin/Release/
   # create coverage file
   - mono --profile=monocov:outfile=monocovCoverage.cov,+Assembly-CSharp-firstpass ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./atom-sdk/test/bin/Release/test.dll
-  - monocov --export-xml=monocovCoverage monocovCoverage.cov  
+  - monocov --export-xml=monocovCoverage monocovCoverage.cov
   # remove code than not in unittests
   - rm ./monocovCoverage/*Atom.xml
-  - rm ./monocovCoverage/*Request.xml 
+  - rm ./monocovCoverage/*Request.xml
+  - rm ./monocovCoverage/*Tracker.xml
+  - rm ./monocovCoverage/*BulkData.xml
 after_success:
   - REPO_COMMIT_AUTHOR=$(git show -s --pretty=format:"%cn")
   - REPO_COMMIT_AUTHOR_EMAIL=$(git show -s --pretty=format:"%ce")

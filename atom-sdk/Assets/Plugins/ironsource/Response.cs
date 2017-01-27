@@ -23,5 +23,14 @@ namespace ironsource {
             this.data = data;
             this.status = status;
         }
+
+
+        public override string ToString() {
+            string errorStr = (error == null) ? "null" : "\"" + error + "\"";
+            string dataStr = (data == null) ? "null" : "\"" + data + "\"";
+
+            return "{ \"error\": " + errorStr + ", \"data\": " + dataStr +
+                ", \"status\": " + status + " }";
+        }
     }
 }

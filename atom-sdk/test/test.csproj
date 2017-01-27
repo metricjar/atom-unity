@@ -48,6 +48,7 @@
     <Compile Include="IronSourceAtomTest.cs" />
     <Compile Include="IronSourceAtomUtilsTest.cs" />
     <Compile Include="ResponseTest.cs" />
+    <Compile Include="BulkDataTest.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

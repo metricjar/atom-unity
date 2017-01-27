@@ -6,9 +6,9 @@ using System;
 namespace ironsource {
     namespace test {        
         [TestFixture()]
-        public class ResponseTest {
+        public class Response_Tests {
             [Test()]
-            public void TestResponseProperties() {
+            public void ResponseProperties_Test() {
                 string expectedError = "test error";
                 string expectedData = "test data";
                 int expectedStatus = 200;

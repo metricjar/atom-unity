@@ -17,7 +17,7 @@ namespace ironsource {
     }
 
     public class IronSourceAtom {
-        protected static string API_VERSION_ = "V1.0.0";
+        protected static string API_VERSION_ = "V1.1.0";
 
         protected string endpoint_ = "https://track.atom-data.io/";
         protected string authKey_ = "";
@@ -52,6 +52,16 @@ namespace ironsource {
         }
 
         /// <summary>
+        /// Check is Debug mode enabled
+        /// </summary>
+        /// <returns>
+        /// Is Debug Mode
+        /// </returns>
+        public bool IsDebug() {
+            return isDebug_;
+        }
+
+        /// <summary>
         /// Inits the coroutine handler.
         /// </summary>
         protected virtual void initCoroutineHandler() {
@@ -59,6 +69,16 @@ namespace ironsource {
             if (coroutineHandler_ == null) {
                 coroutineHandler_ = parentGameObject_.AddComponent<IronSourceCoroutineHandler>();
             }
+        }
+
+        /// <summary>
+        /// Get coroutine handler.
+        /// </summary>
+        /// <returns>
+        /// Coroutine handler as MonoBehaviour.
+        /// </returns>
+        public MonoBehaviour getCoruotinehandler() {
+            return coroutineHandler_;
         }
 
         /// <summary>
@@ -94,7 +114,7 @@ namespace ironsource {
         /// <param name="authKey">
         /// <see cref="string"/> for secret key of stream.
         /// </param>
-        public void SetAuth(string authKey) {
+        public virtual void SetAuth(string authKey) {
             authKey_ = authKey;
         }
 
@@ -108,7 +128,7 @@ namespace ironsource {
             endpoint_ = endpoint;
         }
 
-             
+
         /// <summary>
         /// Send single data to Atom server.
         /// </summary>
@@ -116,7 +136,7 @@ namespace ironsource {
         /// Stream name for saving data in db table
         /// </param>
         /// <param name="data">
-        /// Stream name for saving data in db table
+        /// user data to send
         /// </param>
         /// <param name="method">
         /// <see cref="HttpMethod"/> for POST or GET method for do request
@@ -125,7 +145,7 @@ namespace ironsource {
         /// <see cref="string"/> for response data
         /// </param>
         public void PutEvent(string stream, string data, HttpMethod method = HttpMethod.POST, 
-                             Action<Response> callback = null) {
+            Action<Response> callback = null) {
             string jsonEvent = GetRequestData(stream, data);
             SendEventCoroutine(endpoint_, method, headers_, jsonEvent, callback);
         }
@@ -149,11 +169,11 @@ namespace ironsource {
         /// <see cref="GameObject"/> for callback call.
         /// </param>
         public void PutEvent(string stream, string data, HttpMethod method = HttpMethod.POST, 
-                             string callback = null, GameObject parrentGameObject = null) {
+            string callback = null, GameObject parrentGameObject = null) {
             string jsonEvent = GetRequestData(stream, data);
             SendEventCoroutine(endpoint_, method, headers_, jsonEvent, callback, parrentGameObject);
         }
-       
+
         /// <summary>
         /// Send multiple events data to Atom server.
         /// </summary>
@@ -169,12 +189,16 @@ namespace ironsource {
         /// <param name="callback">
         /// <see cref="Action<Response>"/> for reponse data
         /// </param>
-        public void PutEvents(string stream, List<string> data, Action<Response> callback = null) {
-            HttpMethod method = HttpMethod.POST;
+        public void PutEvents(string stream, List<string> data, Action<Response> callback = null) {            
             string json = IronSourceAtomUtils.ListToJson(data);
+            PutEvents(stream, json, callback);
+        }
+
+        public void PutEvents(string stream, string data, Action<Response> callback = null) {
+            HttpMethod method = HttpMethod.POST;
             printLog("Key: " + authKey_);
 
-            string jsonEvent = GetRequestData(stream, json);
+            string jsonEvent = GetRequestData(stream, data);
 
             SendEventCoroutine(endpoint_ + "bulk", method, headers_, jsonEvent, callback);
         }
@@ -198,12 +222,18 @@ namespace ironsource {
         /// <see cref="GameObject"/> for callback calling
         /// </param>
         public void PutEvents(string stream, List<string> data, string callback = null, 
-                              GameObject parrentGameObject = null) {
-            HttpMethod method = HttpMethod.POST;
+            GameObject parentGameObject = null) {
+
             string json = IronSourceAtomUtils.ListToJson(data);
+            PutEvents(stream, json, callback, parentGameObject);
+        }
+
+        public void PutEvents(string stream, string data, string callback = null, 
+            GameObject parrentGameObject = null) {
+            HttpMethod method = HttpMethod.POST;
             printLog("Key: " + authKey_);
 
-            string jsonEvent = GetRequestData(stream, json);
+            string jsonEvent = GetRequestData(stream, data);
 
             SendEventCoroutine(endpoint_ + "bulk", method, headers_, jsonEvent, callback, parrentGameObject);
         }
@@ -243,7 +273,7 @@ namespace ironsource {
         }
 
         /// <summary>
-        /// Check health of server
+        /// Send data to server
         /// </summary>
         /// <param name="url">
         /// <see cref="string"/> for server address
@@ -261,7 +291,7 @@ namespace ironsource {
         /// <see cref="Action<Response>"/> for receive response from server
         /// </param> 
         protected virtual void SendEventCoroutine(string url, HttpMethod method, Dictionary<string, string> headers,
-                                        string data, Action<Response> callback) {
+            string data, Action<Response> callback) {
 
             Request request = new Request(url, data, headers, callback, isDebug_);
             if (method == HttpMethod.GET) {
@@ -293,7 +323,7 @@ namespace ironsource {
         /// <see cref="GameObject"/> for calling callback
         /// </param>
         protected virtual void SendEventCoroutine(string url, HttpMethod method, Dictionary<string, string> headers,
-                                        string data, string callback, GameObject parrentGameObject) {
+            string data, string callback, GameObject parrentGameObject) {
             if (parrentGameObject == null) {
                 parrentGameObject = parentGameObject_;
             }

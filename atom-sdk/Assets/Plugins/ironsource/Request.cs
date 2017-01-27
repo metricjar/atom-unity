@@ -19,7 +19,7 @@ namespace ironsource {
         protected bool isDebug_;
 
         /// <summary>
-        /// Constructor for Reqeuest
+        /// Constructor for Request
         /// </summary>
         /// <param name="url">
         /// <see cref="string"/> for server address.
@@ -77,7 +77,7 @@ namespace ironsource {
         /// </summary>
         public IEnumerator Get() {
             string url = url_ + "?data=" + IronSourceAtomUtils.Base64Encode(data_);
-            printLog("Request URL: " + url);
+            PrintLog("Request URL: " + url);
 
             WWW www = new WWW(url, null, headers_);
             yield return www;
@@ -89,7 +89,7 @@ namespace ironsource {
         /// POST request to server
         /// </summary>
         public IEnumerator Post() {
-            printLog("Request URL: " + url_);
+            PrintLog("Request URL: " + url_);
             WWW www = new WWW(url_, Encoding.ASCII.GetBytes(data_), headers_);
             yield return www;
 
@@ -133,7 +133,7 @@ namespace ironsource {
             }
         }
 
-        protected void printLog(string data) {
+        protected void PrintLog(string data) {
             if (isDebug_) {
                 Debug.Log(data);
             }

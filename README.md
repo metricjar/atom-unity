@@ -9,12 +9,104 @@ atom-unity is the official [ironSource.atom](http://www.ironsrc.com/data-flow-ma
 
 - [Signup](https://atom.ironsrc.com/#/signup)
 - [Documentation](https://ironsource.github.io/atom-unity/)
-- [Installation](#Installation)
-- [Sending an event](#Using-the-IronSource-API-to-send-events)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Change Log](#change-log)
+- [Example](#example)
 
-#### Installation
+## Installation
 
-#### Using the IronSource API to send events
+Import package for Atom SDK from [dist directory](dist/).
+
+## Usage
+
+You may use the SDK in two different ways:
+
+1. High level "Tracker" - contains in-memory storage and tracks events based on certain parameters.
+2. Low level - contains 2 methods: PutEvent() and PutEvents() to send 1 event or a batch respectively.
+
+### High Level SDK - "Tracker"
+
+The Tracker process:
+
+You can use Track() method in order to track the events to an Atom Stream.
+The tracker accumulates events and flushes them when it meets one of the following conditions:
+
+- Every 10 seconds (default)
+- Number of accumulated events has reached 64 (default)
+- Size of accumulated events has reached 64KB (default)
+
+In case of failure the tracker will preform an exponential backoff.
+In case when maximum of backlog size will be reached - then will be called error callback from Track method.
+The tracker stores events in memory.
+
+Example of using tracker in C#:
+```c#
+public class ButtonEvent : MonoBehaviour {
+    private ironsource.IronSourceAtomTracker tracker_ = null;
+
+    void Start() {
+        tracker_ = new ironsource.IronSourceAtomTracker(gameObject); 
+        // enable print logs
+        tracker_.EnableDebug(true);
+        tracker_.SetAuth("<YOUR_AUTH_KEY>");
+    }
+
+    void Update() {
+        tracker_.Update();
+    }
+
+    public void OnTrackClick() {
+        Action<string, string, Dictionary<string, ironsource.BulkData>> errorCallback = 
+            delegate(string errorStr, string stream, Dictionary<string, ironsource.BulkData> data) {
+
+        };
+            
+        tracker_.Track("<YOUR_STREAM_NAME>", "{\"event\": \"test get 3\"}", errorCallback); 
+    }
+
+    public void OnFlushClick() {
+        tracker_.Flush();
+    }
+}
+```
+
+Example of using tracker in JavaScript:
+```js
+private var tracker_ : ironsource.IronSourceAtomTracker;
+
+function Start() {
+    tracker_ = new ironsource.IronSourceAtomTracker(gameObject);  
+    tracker_.EnableDebug(true);     
+    tracker_.SetAuth("<YOUR_AUTH_KEY>");
+}
+
+function Update() {
+    tracker_.Update();
+}
+
+function ApiErrorCallback(errorStr: String, stream: String, 
+                              data: Dictionary.<String, ironsource.BulkData>) {
+
+}
+
+function OnTrackClick(){
+    tracker_.Track("<YOUR_STREAM_NAME>", "{\"event\": \"test get 3\"}", ApiErrorCallback));
+}
+
+function OnFlushClick() {
+    tracker_.Flush();
+}
+
+```
+
+### Low Level (Basic) SDK
+
+The Low Level SDK has 2 methods:  
+
+- PutEvent - Sends a single event to Atom  
+- PutEvents - Sends a bulk (batch) of events to Atom
+
 Example of sending an event in C#:
 ```c#
 public class ButtonEvent : MonoBehaviour {
@@ -87,13 +179,22 @@ function OnPostBulkClick() {
 }
 ```
 
+## Change Log
 
-### Example
+### v1.1.0
+- Added Tracker
+
+### v1.0.0
+- Basic features - putEvent & putEvents
+
+
+## Example
+You can use our [example](atom-sdk/Assets/example) for sending data to Atom:
 
 ![alt text][example]
 
-### License
-MIT
+## License
+[MIT](LICENSE)
 
 [license-image]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license-url]: LICENSE
@@ -103,4 +204,4 @@ MIT
 [travis-url]: https://travis-ci.org/ironSource/atom-unity
 [coverage-image]: https://coveralls.io/repos/github/ironSource/atom-unity/badge.svg?branch=master
 [coverage-url]: https://coveralls.io/github/ironSource/atom-unity?branch=master
-[example]: https://cloud.githubusercontent.com/assets/1713228/15683093/590c2386-2769-11e6-8429-14f41e937f27.png "example"
+[example]: https://cloud.githubusercontent.com/assets/1713228/22325892/126f2358-e3b9-11e6-9852-4339748a9ff8.png "example"
