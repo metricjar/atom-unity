@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dictionarytojson',['DictionaryToJson',['../classironsource_1_1_iron_source_atom_utils.html#a0d02bab83f1db32c64e8470bb6d3d20f',1,'ironsource::IronSourceAtomUtils']]]
+  ['cleardata',['ClearData',['../classironsource_1_1_bulk_data.html#a51e6a4b6b3279d669b7ac94907138a87',1,'ironsource::BulkData']]]
 ];

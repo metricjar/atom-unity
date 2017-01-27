@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['request',['Request',['../classironsource_1_1_request.html#a85e5b77ef7b994664847347d63cba959',1,'ironsource.Request.Request(string url, string data, Dictionary&lt; string, string &gt; headers, Action&lt; Response &gt; callback, bool isDebug=false)'],['../classironsource_1_1_request.html#a27e3f82e3fb0e65ef44ce765dcc29959',1,'ironsource.Request.Request(string url, string data, Dictionary&lt; string, string &gt; headers, string callback, GameObject parrentGameObject, bool isDebug=false)']]],
-  ['response',['Response',['../classironsource_1_1_response.html#ac08cd47de9418a45ff3074a54f585fa8',1,'ironsource::Response']]]
+  ['initcoroutinehandler',['initCoroutineHandler',['../classironsource_1_1_iron_source_atom.html#a23b591ae92db5398eb7f6ada41005b83',1,'ironsource::IronSourceAtom']]],
+  ['initheaders',['initHeaders',['../classironsource_1_1_iron_source_atom.html#a86bbda5e639756c03b35c40652aa25de',1,'ironsource::IronSourceAtom']]],
+  ['ironsourceatom',['IronSourceAtom',['../classironsource_1_1_iron_source_atom.html#a898348378a081c5be7b787410d92a7cc',1,'ironsource::IronSourceAtom']]],
+  ['ironsourceatomtracker',['IronSourceAtomTracker',['../classironsource_1_1_iron_source_atom_tracker.html#a46c3e3a44b79aac972783e4235ffe963',1,'ironsource::IronSourceAtomTracker']]],
+  ['isdebug',['IsDebug',['../classironsource_1_1_iron_source_atom.html#a0dc981c192cbf312f01963057be2b8a7',1,'ironsource.IronSourceAtom.IsDebug()'],['../classironsource_1_1_iron_source_atom_tracker.html#a7c3bb6cd4fcc9a61a331909cb45cf9c2',1,'ironsource.IronSourceAtomTracker.IsDebug()']]]
 ];

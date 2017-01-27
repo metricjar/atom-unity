@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['base64encode',['Base64Encode',['../classironsource_1_1_iron_source_atom_utils.html#ae82cd7b4df396752b2c3f1429d873d28',1,'ironsource::IronSourceAtomUtils']]]
+  ['addbulkdata',['AddBulkData',['../classironsource_1_1_bulk_data.html#ae3a187261577844d87e38e897bc543a0',1,'ironsource::BulkData']]],
+  ['adddata',['AddData',['../classironsource_1_1_bulk_data.html#af4c4b71824a6094baf1fb78b7c33a578',1,'ironsource::BulkData']]]
 ];
