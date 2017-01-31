@@ -1,4 +1,4 @@
-# ironSource.atom SDK for Unity 3D - Beta Version
+# ironSource.atom SDK for Unity 3D
 
 [![License][license-image]][license-url]
 [![Docs][docs-image]][docs-url]
